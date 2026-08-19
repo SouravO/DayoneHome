@@ -76,7 +76,7 @@ export default function Contact() {
         <section
             id="contact"
             ref={sectionRef}
-            className="relative bg-[#F4F2E3] px-6 py-24 sm:px-10 lg:px-16 overflow-hidden selection:bg-[#DD2D26]/20 selection:text-[#211D18]"
+            className="relative bg-[#F4F2E3] px-6 py-16 sm:px-10 lg:px-16 overflow-hidden selection:bg-[#DD2D26]/20 selection:text-[#211D18]"
         >
             {/* Inline styles for custom premium animations without external CSS dependencies */}
             <style dangerouslySetInnerHTML={{
@@ -369,7 +369,7 @@ export default function Contact() {
                     href={MAP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block group mt-24 lg:mt-32 relative overflow-hidden border border-[#211D18]/[0.08] bg-[#FBF9F0] anim-fade [animation-delay:800ms] cursor-pointer"
+                    className="block group mt-12 lg:mt-20 relative overflow-hidden border border-[#211D18]/[0.08] bg-[#FBF9F0] anim-fade [animation-delay:800ms] cursor-pointer"
                 >
                     {/* Map Grid Background with Radial Mask & Hover Scale */}
                     <div 
@@ -385,7 +385,7 @@ export default function Contact() {
                         }}
                     />
                     
-                    <div className="relative z-10 flex flex-col items-center justify-center py-24 sm:py-32 px-6 text-center">
+                    <div className="relative z-10 flex flex-col items-center justify-center py-16 sm:py-24 px-6 text-center">
                         {/* Floating Pin Wrapper */}
                         <div className="relative mb-8" style={{ animation: 'floatMapPin 6s ease-in-out infinite' }}>
                             {/* Subtle pulsing shadow under pin */}

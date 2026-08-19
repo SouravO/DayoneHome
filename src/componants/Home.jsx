@@ -255,8 +255,8 @@ function Intro() {
   const [imgRef, imgOffset] = useParallax(0.08);
 
   return (
-    <section className="relative w-full pb-32 overflow-hidden" style={{ backgroundColor: COLORS.creamMuted }}>
-      <div className="pt-24 lg:pt-40 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto">
+    <section className="relative w-full pb-16 overflow-hidden" style={{ backgroundColor: COLORS.creamMuted }}>
+      <div className="pt-12 lg:pt-20 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 justify-between items-start">
           
           {/* Massive Typographic Statement */}
@@ -305,14 +305,44 @@ function Intro() {
 }
 
 function Ecosystem() {
+  // A meticulously curated array of existing imagery with varied editorial aspect ratios
+  const marqueeImages = [
+    { src: '/about.png', aspect: 'aspect-[4/3]', width: 'w-[70vw] sm:w-[45vw] lg:w-[28vw]' },
+    { src: '/Home.png', aspect: 'aspect-[3/4]', width: 'w-[55vw] sm:w-[35vw] lg:w-[22vw]' },
+    { src: '/Banner.png', aspect: 'aspect-[16/9]', width: 'w-[85vw] sm:w-[55vw] lg:w-[35vw]' },
+    { src: '/quote.png', aspect: 'aspect-square', width: 'w-[60vw] sm:w-[40vw] lg:w-[24vw]' },
+    { src: '/Hero.png', aspect: 'aspect-[4/5]', width: 'w-[50vw] sm:w-[32vw] lg:w-[20vw]' },
+    { src: '/image.png', aspect: 'aspect-[3/2]', width: 'w-[75vw] sm:w-[48vw] lg:w-[30vw]' },
+    { src: '/aboutbanner.png', aspect: 'aspect-[4/3]', width: 'w-[65vw] sm:w-[42vw] lg:w-[26vw]' },
+    { src: '/image1.png', aspect: 'aspect-[3/4]', width: 'w-[60vw] sm:w-[38vw] lg:w-[23vw]' },
+    { src: '/service.png', aspect: 'aspect-[16/9]', width: 'w-[80vw] sm:w-[50vw] lg:w-[32vw]' },
+    { src: '/quote2.png', aspect: 'aspect-square', width: 'w-[55vw] sm:w-[35vw] lg:w-[21vw]' },
+    { src: '/quote3.png', aspect: 'aspect-[3/2]', width: 'w-[70vw] sm:w-[45vw] lg:w-[28vw]' },
+  ];
+
   return (
-    <section className="relative w-full py-32 lg:py-48" style={{ backgroundColor: COLORS.cream }}>
-      <div className="px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto">
-        
+    <section className="relative w-full py-16 lg:py-24 overflow-hidden" style={{ backgroundColor: COLORS.cream }}>
+      <style>
+        {`
+          @keyframes infinite-scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+          .animate-infinite-scroll {
+            animation: infinite-scroll 60s linear infinite;
+            display: flex;
+            width: max-content;
+          }
+          .marquee-container:hover .animate-infinite-scroll {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
+      
+      <div className="px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto relative z-10">
         <div className="max-w-4xl">
           <h2 className="text-[11vw] lg:text-[7vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-            <TextReveal>Many</TextReveal>
-            <TextReveal delay={100} className="pl-12 lg:pl-24">Industries.</TextReveal>
+            <TextReveal>Many Industries.</TextReveal>
             <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block mt-2 lg:mt-4">
               <TextReveal delay={200}>One mindset.</TextReveal>
             </span>
@@ -325,26 +355,43 @@ function Ecosystem() {
         </div>
       </div>
 
-      {/* High-End Horizontal Scroll for Ecosystem */}
-      <div className="mt-24 lg:mt-32 w-full border-y" style={{ borderColor: COLORS.hairline }}>
-        <div className="flex w-full overflow-x-auto snap-x snap-mandatory hide-scrollbar [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {INDUSTRIES.map((item, i) => (
-            <div 
-              key={item.name}
-              className="w-[85vw] sm:w-[50vw] lg:w-[33.333vw] shrink-0 snap-start flex flex-col justify-between border-r p-8 lg:p-12 xl:p-16 min-h-[40vh] lg:min-h-[50vh] group transition-colors duration-700 hover:bg-[#EBE5D3]"
-              style={{ borderColor: COLORS.hairline }}
-            >
-              <div>
-                <h3 className="text-3xl lg:text-5xl font-black uppercase tracking-tighter" style={{ color: COLORS.charcoal }}>
-                  {item.name}
-                </h3>
-                <div className="mt-8 w-0 h-1 bg-[#CF2D26] transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-16" />
+      {/* High-End Continuous Image Marquee */}
+      <div className="mt-8 lg:mt-12 w-full marquee-container">
+        <div className="animate-infinite-scroll">
+          {/* First Loop Content */}
+          <div className="flex gap-4 sm:gap-6 lg:gap-10 pr-4 sm:pr-6 lg:pr-10 items-center">
+            {marqueeImages.map((item, i) => (
+              <div 
+                key={`set1-${i}`} 
+                className={`relative shrink-0 overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer ${item.width} ${item.aspect}`}
+              >
+                <img 
+                  src={item.src} 
+                  alt="DayOne Ecosystem" 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/image:scale-[1.07]"
+                />
+                {/* Subtle premium hover overlay */}
+                <div className="absolute inset-0 bg-[#262119]/0 transition-colors duration-700 ease-out group-hover/image:bg-[#262119]/10" />
               </div>
-              <p className="mt-12 text-lg lg:text-2xl leading-relaxed transition-colors duration-500 group-hover:text-[#262119]" style={{ color: COLORS.charcoalMuted }}>
-                {item.desc}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
+          {/* Second Loop for seamless infinite transition */}
+          <div className="flex gap-4 sm:gap-6 lg:gap-10 pr-4 sm:pr-6 lg:pr-10 items-center">
+            {marqueeImages.map((item, i) => (
+              <div 
+                key={`set2-${i}`} 
+                className={`relative shrink-0 overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer ${item.width} ${item.aspect}`}
+              >
+                <img 
+                  src={item.src} 
+                  alt="DayOne Ecosystem" 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/image:scale-[1.07]"
+                />
+                {/* Subtle premium hover overlay */}
+                <div className="absolute inset-0 bg-[#262119]/0 transition-colors duration-700 ease-out group-hover/image:bg-[#262119]/10" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -355,7 +402,7 @@ function Ventures() {
   const [hoverIndex, setHoverIndex] = useState(null);
 
   return (
-    <section className="relative w-full py-32 lg:py-48 bg-charcoal overflow-hidden group/section" style={{ backgroundColor: COLORS.charcoal }}>
+    <section className="relative w-full py-16 lg:py-24 bg-charcoal overflow-hidden group/section" style={{ backgroundColor: COLORS.charcoal }}>
       
       {/* Dynamic Background Image linked to hover state */}
       <div 
@@ -378,7 +425,7 @@ function Ventures() {
           </span>
         </h2>
 
-        <div className="mt-20 lg:mt-32 flex flex-col w-full border-t" style={{ borderColor: COLORS.hairlineLight }}>
+        <div className="mt-12 lg:mt-20 flex flex-col w-full border-t" style={{ borderColor: COLORS.hairlineLight }}>
           {VENTURES.map((v, i) => (
             <div 
               key={v.name}
@@ -414,7 +461,7 @@ function Ventures() {
 
 function ClosingCTA() {
   return (
-    <section className="relative w-full min-h-[85svh] flex flex-col justify-center py-32 overflow-hidden" style={{ backgroundColor: COLORS.red }}>
+    <section className="relative w-full min-h-[70svh] flex flex-col justify-center py-20 overflow-hidden" style={{ backgroundColor: COLORS.red }}>
       {/* Grain / Noise Overlay */}
       <div 
         className="absolute inset-0 opacity-[0.04] mix-blend-multiply pointer-events-none"

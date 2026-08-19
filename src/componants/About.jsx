@@ -168,7 +168,7 @@ function About() {
       {/* ============================================================ */}
       {/* SECTION 1 — NEW EDITORIAL HERO                               */}
       {/* ============================================================ */}
-      <section className="relative min-h-screen pt-8 pb-20 px-6 sm:px-10 lg:px-16 bg-[#F4F0E2] flex flex-col">
+      <section className="relative min-h-screen pt-8 pb-12 px-6 sm:px-10 lg:px-16 bg-[#F4F0E2] flex flex-col">
         {/* Subtle Top Nav/Eyebrow */}
         <Reveal delay={100} y="translate-y-4">
           <div className="flex justify-between items-center pb-6 border-b border-[#211D1B]/15">
@@ -178,7 +178,7 @@ function About() {
         </Reveal>
 
         {/* Viewport-Scaling Massive Headline */}
-        <div className="pt-12 pb-16 md:pt-20 md:pb-24 w-full">
+        <div className="pt-8 pb-12 md:pt-12 md:pb-16 w-full">
           <h1 className="text-[14vw] sm:text-[11vw] leading-[0.8] font-light tracking-tighter uppercase text-[#211D1B]" style={fontDisplay}>
             <div className="flex">
               <TextMask delay={200}>ARCHITECTING</TextMask>
@@ -252,7 +252,7 @@ function About() {
       {/* ============================================================ */}
       {/* SECTION 2 — OUR STORY / MINDSET & JOURNEY                    */}
       {/* ============================================================ */}
-      <section className="relative py-32 sm:py-40 bg-[#211D1B] text-[#F4F0E2] overflow-hidden">
+      <section className="relative py-16 sm:py-24 bg-[#211D1B] text-[#F4F0E2] overflow-hidden">
         {/* Deep background warmth gradient */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#DC2D26]/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -278,7 +278,7 @@ function About() {
           </div>
 
           {/* Interactive Journey Track */}
-          <div className="mt-28 border-t border-[#F4F0E2]/15 pt-16">
+          <div className="mt-16 border-t border-[#F4F0E2]/15 pt-10">
             <Reveal delay={100}>
               <div className="flex flex-col space-y-2">
                 {journey.map((step, i) => {
@@ -318,7 +318,7 @@ function About() {
           </div>
 
           {/* Banner Container */}
-          <div className="mt-32 relative">
+          <div className="mt-20 relative">
             <Reveal delay={200}>
               <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden group border border-[#F4F0E2]/20 shadow-2xl">
                 <ImageMask src="/aboutbanner.png" alt="The DayOne Mindset" delay={200} className="w-full h-full" imgClassName="brightness-95 group-hover:brightness-100" />
@@ -332,7 +332,7 @@ function About() {
       {/* ============================================================ */}
       {/* SECTION 3 — HOW WE BUILD / ECOSYSTEM                         */}
       {/* ============================================================ */}
-      <section className="py-32 sm:py-40 bg-[#ECE3CE] text-[#211D1B] overflow-hidden relative border-t border-[#211D1B]/10">
+      <section className="py-16 sm:py-24 bg-[#ECE3CE] text-[#211D1B] overflow-hidden relative border-t border-[#211D1B]/10">
         <div className="px-6 sm:px-10 lg:px-16 mx-auto max-w-7xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
             <Reveal>
@@ -431,14 +431,14 @@ function About() {
       {/* ============================================================ */}
       <section className="bg-[#211D1B] text-[#F4F0E2] relative overflow-hidden">
         {/* Model Comparison */}
-        <div className="px-6 py-32 sm:px-10 sm:py-40 lg:px-16 mx-auto max-w-7xl border-b border-[#F4F0E2]/10">
+        <div className="px-6 py-16 sm:px-10 sm:py-24 lg:px-16 mx-auto max-w-7xl border-b border-[#F4F0E2]/10">
           <Reveal>
             <h2 className="text-4xl sm:text-6xl lg:text-8xl font-light leading-[0.95] tracking-tight max-w-4xl" style={fontDisplay}>
               BUILT AROUND <span className="italic text-[#DC2D26] font-normal">THE WORK.</span>
             </h2>
           </Reveal>
 
-          <div className="mt-24 grid md:grid-cols-2 gap-16 md:gap-24 relative">
+          <div className="mt-16 grid md:grid-cols-2 gap-12 md:gap-20 relative">
             {/* Center Vertical Divider Line */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#F4F0E2]/10" />
 
@@ -487,7 +487,7 @@ function About() {
         </div>
 
         {/* Final Statement & CTA Section */}
-        <div className="relative py-36 sm:py-48 px-6 sm:px-10 lg:px-16 overflow-hidden flex items-center justify-center text-center bg-gradient-to-b from-[#211D1B] to-[#DC2D26]">
+        <div className="relative py-20 sm:py-28 px-6 sm:px-10 lg:px-16 overflow-hidden flex items-center justify-center text-center bg-gradient-to-b from-[#211D1B] to-[#DC2D26]">
           {/* Subtle Layered Border Framing */}
           <div className="absolute inset-6 sm:inset-12 border border-[#F4F0E2]/15 pointer-events-none" />
           <div className="absolute inset-10 sm:inset-16 border border-[#F4F0E2]/5 pointer-events-none" />

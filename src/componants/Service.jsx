@@ -236,7 +236,7 @@ export default function Service() {
       `}</style>
 
       {/* SECTION 1 — HERO */}
-      <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between overflow-hidden px-6 pt-32 pb-16 sm:px-10 lg:px-16 border-b border-[rgba(33,29,27,0.08)]">
+      <section className="relative min-h-[85vh] lg:min-h-screen flex flex-col justify-between overflow-hidden px-6 pt-24 pb-12 sm:px-10 lg:px-16 border-b border-[rgba(33,29,27,0.08)]">
         {/* Subtle Decorative Architectural Grid */}
         <div className="absolute inset-0 pointer-events-none grid grid-cols-4 md:grid-cols-12 max-w-7xl mx-auto opacity-[0.03]">
           {Array.from({ length: 12 }).map((_, i) => (
@@ -276,7 +276,7 @@ export default function Service() {
           </div>
 
           {/* Hero Lower Layout: Subtext + Interactive Integrated Image */}
-          <div className="mt-16 lg:mt-24 grid lg:grid-cols-12 gap-12 items-end">
+          <div className="mt-10 lg:mt-16 grid lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-6 flex flex-col gap-8">
               <Reveal delay={550}>
                 <p className="text-2xl sm:text-3xl lg:text-4xl font-light leading-[1.25] tracking-tight text-[#211D1B]" style={fontDisplay}>
@@ -361,7 +361,7 @@ export default function Service() {
       <section
         id="capabilities"
         ref={capabilitiesRef}
-        className="relative py-32 lg:py-40 text-[#F4F0E2] transition-colors duration-700"
+        className="relative py-16 lg:py-24 text-[#F4F0E2] transition-colors duration-700"
         style={{ backgroundColor: c.charcoal }}
       >
         {/* Ambient Subtle Gradient */}
@@ -369,7 +369,7 @@ export default function Service() {
 
         <div className="px-6 sm:px-10 lg:px-16 mx-auto max-w-7xl">
           {/* Section Header */}
-          <div className="grid lg:grid-cols-12 gap-8 items-end pb-20 border-b border-[rgba(244,240,226,0.12)]">
+          <div className="grid lg:grid-cols-12 gap-8 items-end pb-12 border-b border-[rgba(244,240,226,0.12)]">
             <div className="lg:col-span-8">
               <Reveal>
                 <h2
@@ -490,7 +490,7 @@ export default function Service() {
 
       {/* SECTION 3 — PROCESS (Warm Architectural Stage Track) */}
       <section
-        className="py-32 lg:py-40 overflow-hidden border-t border-[rgba(33,29,27,0.08)] transition-colors duration-700"
+        className="py-16 lg:py-24 overflow-hidden border-t border-[rgba(33,29,27,0.08)] transition-colors duration-700"
         style={{ backgroundColor: c.creamDeep }}
       >
         <div className="px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
@@ -598,7 +598,7 @@ export default function Service() {
       {/* SECTION 4 — GROWTH & GRAND FINALE CTA */}
       <section className="bg-[#F4F0E2] border-t border-[rgba(33,29,27,0.08)]">
         {/* Growth Philosophy Section */}
-        <div className="px-6 py-32 sm:px-10 lg:px-16 mx-auto max-w-7xl">
+        <div className="px-6 py-16 sm:px-10 lg:px-16 mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
             <div className="lg:col-span-6">
               <Reveal>
@@ -649,7 +649,7 @@ export default function Service() {
 
         {/* Grand Finale High-Impact DayOne Red CTA Block */}
         <div
-          className="relative overflow-hidden px-6 py-32 sm:px-10 sm:py-44 flex justify-center items-center text-center transition-colors duration-700"
+          className="relative overflow-hidden px-6 py-20 sm:px-10 sm:py-28 flex justify-center items-center text-center transition-colors duration-700"
           style={{ backgroundColor: c.red }}
         >
           {/* Architectural Layered Frames */}
