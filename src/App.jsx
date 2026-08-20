@@ -4,6 +4,7 @@ import About from './componants/About'
 import Contact from './componants/Contact'
 import Footer from './componants/Footer'
 import Home from './componants/Home'
+import { Intro } from './componants/Intro'
 import Navbar from './componants/Navbar'
 import Service from './componants/Service'
 
@@ -22,6 +23,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <div className="min-h-screen bg-white">
+        <Intro />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import BuildWithUs from "./BuildWithUs";
 
 /* ------------------------------------------------------------------ */
 /* Brand Tokens                                                       */
@@ -209,7 +210,7 @@ export default function Service() {
   };
 
   return (
-    <div style={{ ...fontBody, backgroundColor: c.cream }} className="text-[#211D1B] antialiased selection:bg-[#DC2D26] selection:text-white overflow-x-hidden">
+    <div style={{ ...fontBody, backgroundColor: c.cream }} className="text-[#211D1B] antialiased selection:bg-[#DC2D26] selection:text-white overflow-x-clip">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap');
         
@@ -356,6 +357,9 @@ export default function Service() {
           </div>
         </div>
       </section>
+
+      {/* SECTION 2 — BUILD WITH US */}
+      <BuildWithUs />
 
       {/* SECTION 2 — CAPABILITIES (Deep Charcoal Editorial Moment) */}
       <section
