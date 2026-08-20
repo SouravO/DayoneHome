@@ -7,15 +7,15 @@ export const Intro = () => {
     // Prevent scrolling while intro is active
     document.body.style.overflow = 'hidden';
 
-    // Cinematic timing sequence
-    const t1 = setTimeout(() => setPhase('oneDay'), 400);   // Reveal "One Day"
-    const t2 = setTimeout(() => setPhase('dayOne'), 2200);  // Morph to "DayOne"
-    const t3 = setTimeout(() => setPhase('exit'), 4400);    // Slide away (allow settle to finish)
+    // Snappy, instant cinematic timing sequence
+    const t1 = setTimeout(() => setPhase('oneDay'), 200);   // Reveal "One Day" quickly
+    const t2 = setTimeout(() => setPhase('dayOne'), 800);   // Immediate swap into "DayOne"
+    const t3 = setTimeout(() => setPhase('exit'), 1600);    // Slide away 
     const t4 = setTimeout(() => {
       setPhase('done');
       // Restore scrolling when intro finishes
       document.body.style.overflow = '';
-    }, 5400);
+    }, 2400);
 
     return () => {
       clearTimeout(t1);
@@ -27,6 +27,9 @@ export const Intro = () => {
   }, []);
 
   if (phase === 'done') return null;
+
+  const isVisible = phase !== 'initial';
+  const isSwapped = phase === 'dayOne' || phase === 'exit';
 
   return (
     <>
@@ -42,8 +45,8 @@ export const Intro = () => {
           align-items: center;
           justify-content: center;
           z-index: 9999;
-          /* Fast, cinematic slide up */
-          transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1);
+          /* Fast, smooth slide up */
+          transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
         }
         .intro-overlay.exit {
           transform: translateY(-100%);
@@ -65,80 +68,96 @@ export const Intro = () => {
           }
         }
 
-        .text-layer {
-          position: absolute;
-          white-space: nowrap;
-          will-change: transform, opacity, filter, letter-spacing;
-        }
-        
-        /* "One Day" entrance and exit */
-        .text-one-day {
-          color: #262119;
+        /* Container holding both words initially spaced as "One Day" */
+        .swap-stage {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.35em;
           opacity: 0;
-          transform: translateY(20px);
-          filter: blur(10px);
-          font-weight: 400;
-          letter-spacing: -0.01em;
-          transition: opacity 1s ease-out, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1s ease-out;
+          transform: translateY(15px);
+          filter: blur(8px);
+          transition: opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease-out;
+          will-change: transform, opacity, filter;
         }
-        .text-one-day.active {
+
+        /* Initial reveal of "One Day" */
+        .swap-stage.visible {
           opacity: 1;
           transform: translateY(0);
           filter: blur(0px);
         }
-        /* Quickly fade and blur out to prevent overlapping double-exposure */
-        .text-one-day.morph-out {
-          opacity: 0;
-          transform: scale(1.05) translateY(-5px);
-          filter: blur(12px);
-          letter-spacing: 0.05em;
-          transition: opacity 0.4s ease-in, transform 0.6s ease-in, filter 0.5s ease-in, letter-spacing 0.6s ease-in;
-          pointer-events: none;
+
+        /* Micro offset adjustment so the final locked "DayOne" remains optical dead-center */
+        .swap-stage.swapped {
+          transform: translateY(0) translateX(0.175em);
+          transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* "DayOne" morph entrance */
-        .text-day-one {
+        /* Base styling for word blocks */
+        .word {
+          display: inline-block;
+          white-space: nowrap;
           color: #262119;
-          opacity: 0;
-          transform: scale(0.92) translateY(5px);
-          font-weight: 600;
-          filter: blur(12px);
-          letter-spacing: -0.06em;
-          transition: none;
-        }
-        .text-day-one.active {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-          filter: blur(0px);
-          letter-spacing: -0.03em;
-          /* 0.3s delay ensures the previous text has dissolved before this one emerges */
-          transition: opacity 0.8s ease-out 0.3s, 
-                      filter 0.8s ease-out 0.3s, 
-                      /* 2.5s duration creates the subtle micro-scale "settle" effect */
-                      transform 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
-                      letter-spacing 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+          font-weight: 400;
+          letter-spacing: -0.01em;
+          will-change: transform, color, font-weight, letter-spacing;
+          transition: color 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+                      font-weight 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+                      letter-spacing 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        .accent-red {
+        /* "One" moves right in an upward curve, turns red, and tightens into the brand wordmark */
+        .word-one.swapped {
+          animation: swapRight 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
           color: #CF2D26;
+          font-weight: 600;
+          letter-spacing: -0.03em;
+        }
+
+        /* "Day" moves left in a downward curve, closing the gap to form "DayOne" */
+        .word-day.swapped {
+          animation: swapLeft 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+          font-weight: 600;
+          letter-spacing: -0.03em;
+        }
+
+        /* Accelerated curved trajectory keyframes for "One" (moves Right) */
+        @keyframes swapRight {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          45% {
+            transform: translate(50%, -0.2em) scale(1.02);
+          }
+          100% {
+            transform: translate(100%, 0) scale(1);
+          }
+        }
+
+        /* Accelerated curved trajectory keyframes for "Day" (moves Left) */
+        @keyframes swapLeft {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          45% {
+            transform: translate(calc(-50% - 0.175em), 0.2em) scale(0.98);
+          }
+          100% {
+            transform: translate(calc(-100% - 0.35em), 0) scale(1);
+          }
         }
       `}</style>
 
       <div className={`intro-overlay ${phase === 'exit' ? 'exit' : ''}`}>
         <div className="intro-text-wrapper">
-          <div 
-            className={`text-layer text-one-day ${
-              phase === 'oneDay' ? 'active' : (phase === 'dayOne' || phase === 'exit' ? 'morph-out' : '')
-            }`}
-          >
-            One Day
-          </div>
-          <div 
-            className={`text-layer text-day-one ${
-              phase === 'dayOne' || phase === 'exit' ? 'active' : ''
-            }`}
-          >
-            Day<span className="accent-red">One</span>
+          <div className={`swap-stage ${isVisible ? 'visible' : ''} ${isSwapped ? 'swapped' : ''}`}>
+            <span className={`word word-one ${isSwapped ? 'swapped' : ''}`}>
+              One
+            </span>
+            <span className={`word word-day ${isSwapped ? 'swapped' : ''}`}>
+              Day
+            </span>
           </div>
         </div>
       </div>
