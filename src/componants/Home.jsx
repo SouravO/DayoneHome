@@ -370,17 +370,17 @@ function Intro() {
 
 function Ecosystem() {
   const marqueeImages = [
-    { src: '/about.png', aspect: 'aspect-[4/3]', width: 'w-[70vw] sm:w-[45vw] lg:w-[28vw]' },
-    { src: '/Home.png', aspect: 'aspect-[3/4]', width: 'w-[55vw] sm:w-[35vw] lg:w-[22vw]' },
-    { src: '/Banner.png', aspect: 'aspect-[16/9]', width: 'w-[85vw] sm:w-[55vw] lg:w-[35vw]' },
-    { src: '/quote.png', aspect: 'aspect-square', width: 'w-[60vw] sm:w-[40vw] lg:w-[24vw]' },
-    { src: '/Hero.png', aspect: 'aspect-[4/5]', width: 'w-[50vw] sm:w-[32vw] lg:w-[20vw]' },
-    { src: '/image.png', aspect: 'aspect-[3/2]', width: 'w-[75vw] sm:w-[48vw] lg:w-[30vw]' },
-    { src: '/aboutbanner.png', aspect: 'aspect-[4/3]', width: 'w-[65vw] sm:w-[42vw] lg:w-[26vw]' },
-    { src: '/image1.png', aspect: 'aspect-[3/4]', width: 'w-[60vw] sm:w-[38vw] lg:w-[23vw]' },
-    { src: '/service.png', aspect: 'aspect-[16/9]', width: 'w-[80vw] sm:w-[50vw] lg:w-[32vw]' },
-    { src: '/quote2.png', aspect: 'aspect-square', width: 'w-[55vw] sm:w-[35vw] lg:w-[21vw]' },
-    { src: '/quote3.png', aspect: 'aspect-[3/2]', width: 'w-[70vw] sm:w-[45vw] lg:w-[28vw]' },
+    { src: '/about.png' },
+    { src: '/Home.png' },
+    { src: '/Banner.png' },
+    { src: '/quote.png' },
+    { src: '/Hero.png' },
+    { src: '/image.png' },
+    { src: '/aboutbanner.png' },
+    { src: '/image1.png' },
+    { src: '/service.png' },
+    { src: '/quote2.png' },
+    { src: '/quote3.png' },
   ];
 
   return (
@@ -426,7 +426,7 @@ function Ecosystem() {
             {marqueeImages.map((item, i) => (
               <div 
                 key={`set1-${i}`} 
-                className={`relative shrink-0 overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer ${item.width} ${item.aspect}`}
+                className="relative shrink-0 w-[70vw] sm:w-[45vw] lg:w-[28vw] aspect-[4/3] overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer"
               >
                 <img 
                   src={item.src} 
@@ -442,7 +442,7 @@ function Ecosystem() {
             {marqueeImages.map((item, i) => (
               <div 
                 key={`set2-${i}`} 
-                className={`relative shrink-0 overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer ${item.width} ${item.aspect}`}
+                className="relative shrink-0 w-[70vw] sm:w-[45vw] lg:w-[28vw] aspect-[4/3] overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer"
               >
                 <img 
                   src={item.src} 

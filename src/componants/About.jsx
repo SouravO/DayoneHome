@@ -171,10 +171,7 @@ function About() {
       <section className="relative min-h-screen pt-8 pb-12 px-6 sm:px-10 lg:px-16 bg-[#F4F0E2] flex flex-col">
         {/* Subtle Top Nav/Eyebrow */}
         <Reveal delay={100} y="translate-y-4">
-          <div className="flex justify-between items-center pb-6 border-b border-[#211D1B]/15">
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase">DayOne Studio</span>
-            <span className="text-xs sm:text-sm tracking-[0.2em] uppercase text-[#615A50]">Venture Architecture</span>
-          </div>
+         
         </Reveal>
 
         {/* Viewport-Scaling Massive Headline */}
