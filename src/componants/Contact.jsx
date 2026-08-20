@@ -26,7 +26,7 @@ const INTEREST_OPTIONS = [
 ];
 
 const CONTACT_EMAIL = "dayoneventurestudio@gmail.com";
-const CONTACT_PHONE = "8921406772";
+const CONTACT_PHONE = "8129957753";
 
 const MAP_QUERY =
     "Startup Park, Total Mall, opposite Madiwala Police Station, Koramangala 2nd Block, Bengaluru, Karnataka 560068";
