@@ -25,9 +25,8 @@ const INTEREST_OPTIONS = [
     "General enquiry",
 ];
 
-// Placeholders — swap in DayOne's confirmed email and phone number when available.
-const CONTACT_EMAIL = "hello@dayoneventures.com";
-const CONTACT_PHONE = "+91 XXX XXX XXXX";
+const CONTACT_EMAIL = "dayoneventurestudio@gmail.com";
+const CONTACT_PHONE = "8921406772";
 
 const MAP_QUERY =
     "Startup Park, Total Mall, opposite Madiwala Police Station, Koramangala 2nd Block, Bengaluru, Karnataka 560068";
@@ -68,7 +67,34 @@ export default function Contact() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // UI only for now — wire this up to a real endpoint later.
+
+        // Preserve native required-field validation on the existing inputs.
+        const formEl = event.currentTarget;
+        if (!formEl.checkValidity()) {
+            formEl.reportValidity();
+            return;
+        }
+
+        // Build the email body dynamically from whatever the user entered.
+        const bodyLines = [`Name: ${form.name}`, `Email: ${form.email}`];
+        if (form.phone) bodyLines.push(`Phone: ${form.phone}`);
+        if (form.company) bodyLines.push(`Company: ${form.company}`);
+        if (form.interest) bodyLines.push(`Interest: ${form.interest}`);
+        bodyLines.push("", "Message:", form.message);
+
+        const subject = `New Contact Form Submission from ${form.name}`;
+        const body = bodyLines.join("\n");
+
+        const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+            subject
+        )}&body=${encodeURIComponent(body)}`;
+
+        try {
+            window.location.href = mailtoLink;
+        } catch (err) {
+            // If the device can't open a mail client, fail silently and keep the page intact.
+        }
+
         setSubmitted(true);
     };
 
@@ -186,7 +212,13 @@ export default function Contact() {
                                     {CONTACT_EMAIL}
                                     <span className="absolute -bottom-1 left-0 h-[1px] w-full origin-right scale-x-0 bg-[#DD2D26] transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100" />
                                 </a>
-                                <span className="text-[#211D18]/50 mt-1 tracking-wide">{CONTACT_PHONE}</span>
+                                <a
+                                    href={`tel:${CONTACT_PHONE}`}
+                                    className="group relative w-fit text-[#211D18]/50 transition-colors duration-300 hover:text-[#DD2D26] mt-1 tracking-wide"
+                                >
+                                    {CONTACT_PHONE}
+                                    <span className="absolute -bottom-1 left-0 h-[1px] w-full origin-right scale-x-0 bg-[#DD2D26] transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100" />
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -349,10 +381,10 @@ export default function Contact() {
                                             </svg>
                                         </div>
                                         <h3 style={{ fontFamily: DISPLAY_FONT }} className="text-[2rem] font-medium text-[#211D18] mb-3">
-                                            Message Received.
+                                            Opening your email app.
                                         </h3>
                                         <p className="text-[16px] text-[#211D18]/60 max-w-sm mx-auto">
-                                            Thank you for reaching out. The DayOne team will review your message and be in touch shortly.
+                                            Your message has been pre-filled — just hit send from your email app to reach the DayOne team.
                                         </p>
                                     </div>
                                 )}
