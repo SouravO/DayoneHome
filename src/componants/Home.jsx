@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const COLORS = {
   cream: "#F5F1E0",
@@ -162,13 +162,42 @@ const INDUSTRIES = [
   { name: "Emerging Ventures", desc: "Exploring new opportunities where the next business can begin." },
 ];
 
-const VENTURES = [
-  { name: "DayOne Media", desc: "Building modern businesses around brand, communication and growth." },
-  { name: "DayOne Energy", desc: "Exploring opportunities across the evolving energy ecosystem." },
-  { name: "DayOne Digital", desc: "Building digital products and technology-led business models." },
-  { name: "DayOne Commerce", desc: "Creating modern consumer businesses around changing customer behavior." },
-  { name: "DayOne Hospitality", desc: "Building differentiated hospitality and experience-led ventures." },
-  { name: "DayOne Property", desc: "Exploring opportunities across property and real-estate services." },
+const CAPABILITIES_DATA = [
+  {
+    title: "Business Strategy",
+    desc: "Define the right opportunity, business model and path forward before turning an idea into a scalable venture.",
+    img: "/business_strategy.png"
+  },
+  {
+    title: "Product Development",
+    desc: "Turn promising ideas into focused products through strategy, validation and thoughtful execution.",
+    img: "/product_development.png"
+  },
+  {
+    title: "Brand Building",
+    desc: "Build distinctive brands that communicate clearly, create trust and give new businesses a strong identity.",
+    img: "/Brand_Building.png"
+  },
+  {
+    title: "Technology",
+    desc: "Design and build the technology foundation needed to turn ambitious ideas into scalable products and systems.",
+    img: "/Technology.png"
+  },
+  {
+    title: "Go-to-Market",
+    desc: "Shape the positioning, launch strategy and growth path needed to bring the right product to the right market.",
+    img: "/Go-to-Market.png"
+  },
+  {
+    title: "Operations",
+    desc: "Build the processes, systems and operational foundation that allow a growing company to move faster and smarter.",
+    img: "/Operations.png"
+  },
+  {
+    title: "Fundraising Preparation",
+    desc: "Prepare the story, strategy and materials needed to approach investors with clarity and confidence.",
+    img: "/Fundraising_Preparation.png"
+  }
 ];
 
 const _PHILOSOPHY_STATES = [
@@ -381,6 +410,13 @@ function Ecosystem() {
     { src: '/service.png' },
     { src: '/quote2.png' },
     { src: '/quote3.png' },
+    { src: '/business_strategy.png' },
+    { src: '/product_development.png' },
+    { src: '/Brand_Building.png' },
+    { src: '/Technology.png' },
+    { src: '/Go-to-Market.png' },
+    { src: '/Operations.png' },
+    { src: '/Fundraising_Preparation.png' },
   ];
 
   return (
@@ -459,67 +495,158 @@ function Ecosystem() {
   );
 }
 
-function Ventures() {
-  const [hoverIndex, setHoverIndex] = useState(null);
+function Capabilities() {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative w-full py-16 lg:py-24 bg-charcoal overflow-hidden group/section" style={{ backgroundColor: COLORS.charcoal }}>
-      
-      {/* Dynamic Background Image linked to hover state */}
-      <div 
-        className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-[1200ms] ease-out opacity-0 group-hover/section:opacity-[0.15]"
-      >
-        <img 
-          src="/Home.png" 
-          alt="Ventures Abstract" 
-          className="w-full h-full object-cover grayscale mix-blend-luminosity transition-transform duration-[2000ms] ease-out scale-110 group-hover/section:scale-100" 
-          style={{ objectPosition: hoverIndex !== null ? `center ${hoverIndex * 15}%` : "center center" }}
-        />
-        <div className="absolute inset-0 bg-[#262119]/50" />
-      </div>
-
-      <div className="relative z-10 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto">
-        <h2 className="text-[11vw] lg:text-[7.5vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.cream }}>
-          <TextReveal>Businesses</TextReveal>
-          <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block pl-12 lg:pl-32 mt-2">
-            <TextReveal delay={150}>in motion.</TextReveal>
+    <section className="relative w-full py-20 lg:py-32 overflow-hidden border-t" style={{ backgroundColor: COLORS.cream, borderColor: COLORS.hairline }}>
+      <div className="px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto">
+        
+        {/* Section Header */}
+        <div className="max-w-4xl">
+          <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#CF2D26] block mb-4">
+            DayOne Ventures
           </span>
-        </h2>
+          <h2 className="text-[10vw] lg:text-[6.5vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
+            <TextReveal>Built for</TextReveal>
+            <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block mt-1">
+              <TextReveal delay={150}>day one.</TextReveal>
+            </span>
+          </h2>
+          
+          <FadeReveal delay={250} className="mt-8 lg:mt-10">
+            <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-3xl font-medium" style={{ color: COLORS.charcoalMuted }}>
+              A venture studio that works alongside founders and institutions to create, structure, launch and scale new companies.
+            </p>
+          </FadeReveal>
+        </div>
 
-        <div className="mt-12 lg:mt-20 flex flex-col w-full border-t" style={{ borderColor: COLORS.hairlineLight }}>
-          {VENTURES.map((v, i) => (
-            <div 
-              key={v.name}
-              onMouseEnter={() => setHoverIndex(i)}
-              onMouseLeave={() => setHoverIndex(null)}
-              className="group flex flex-col lg:flex-row lg:items-center justify-between border-b py-10 lg:py-14 cursor-pointer transition-colors duration-500 hover:bg-[#F5F1E0]/5"
-              style={{ borderColor: COLORS.hairlineLight }}
-            >
-              <div className="w-full lg:w-[45%] overflow-hidden">
-                <h3 className="text-3xl sm:text-4xl lg:text-[3.5rem] font-black uppercase tracking-tighter text-[#F5F1E0] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:group-hover:translate-x-8">
-                  {v.name}
-                </h3>
-              </div>
+        {/* Editorial Layout: Interactive Capabilities List + Parallax Visual Card */}
+        <div className="mt-16 lg:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          
+          {/* Main Column: Interactive Editorial List */}
+          <div className="lg:col-span-7 flex flex-col border-t" style={{ borderColor: COLORS.hairline }}>
+            {CAPABILITIES_DATA.map((cap, i) => {
+              const isActive = activeIndex === i;
               
-              <div className="mt-6 lg:mt-0 w-full lg:w-[40%] pr-8">
-                <p className="text-lg lg:text-xl leading-relaxed text-[#F5F1E0]/70 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:group-hover:translate-x-4">
-                  {v.desc}
-                </p>
-              </div>
+              return (
+                <div
+                  key={cap.title}
+                  onMouseEnter={() => setActiveIndex(i)}
+                  className={`group relative flex flex-col py-6 lg:py-8 border-b transition-colors duration-500 cursor-pointer ${
+                    isActive ? "border-[#CF2D26]" : "border-[#262119]/10"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-6 sm:gap-10">
+                      {/* Editorial Index */}
+                      <span 
+                        className={`text-xs md:text-sm font-mono font-bold tracking-widest transition-all duration-500 transform ${
+                          isActive ? "text-[#CF2D26] -translate-y-1" : "text-[#262119]/40"
+                        }`}
+                      >
+                        0{i + 1}
+                      </span>
+                      
+                      {/* Capability Title */}
+                      <h3 
+                        className={`text-2xl sm:text-3xl lg:text-[2.5rem] font-extrabold uppercase tracking-tight transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                          isActive ? "text-[#CF2D26] translate-x-4 lg:translate-x-6" : "text-[#262119]"
+                        }`}
+                      >
+                        {cap.title}
+                      </h3>
+                    </div>
 
-              <div className="mt-8 lg:mt-0 w-full lg:w-[10%] flex justify-start lg:justify-end">
-                <div className="w-14 h-14 rounded-full border border-[#F5F1E0]/20 flex items-center justify-center text-[#F5F1E0] transition-all duration-500 ease-out group-hover:bg-[#CF2D26] group-hover:border-[#CF2D26] group-hover:text-white lg:group-hover:-translate-x-4">
-                  <ArrowUpRight size={24} className="transition-transform duration-500 group-hover:rotate-45" />
+                    {/* Interactive Arrow Indicator */}
+                    <div 
+                      className={`hidden sm:flex w-10 h-10 rounded-full border items-center justify-center transition-all duration-500 ${
+                        isActive 
+                          ? "border-[#CF2D26] bg-[#CF2D26] text-white opacity-100 translate-x-0" 
+                          : "border-transparent text-transparent opacity-0 -translate-x-4"
+                      }`}
+                    >
+                      <ArrowRight size={18} className={`transition-transform duration-500 ${isActive ? "rotate-[-45deg]" : "rotate-0"}`} />
+                    </div>
+                  </div>
+
+                  {/* Expandable Description Area (Fluid CSS Grid Height Transition) */}
+                  <div 
+                    className={`grid transition-[grid-template-rows,opacity] duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <p 
+                        className="pt-4 pb-2 pl-12 sm:pl-[4.5rem] lg:pl-[5.5rem] text-lg lg:text-xl font-medium leading-relaxed max-w-xl" 
+                        style={{ color: COLORS.charcoalMuted }}
+                      >
+                        {cap.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+          </div>
+
+          {/* Right Column: Sticky Contextual Image Reveal */}
+          <div className="hidden lg:block lg:col-span-5 sticky top-20">
+            <FadeReveal distance="translate-y-12">
+              <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl bg-[#262119]">
+                
+                {/* Image Stack */}
+                {CAPABILITIES_DATA.map((cap, i) => (
+                  <img
+                    key={`img-${cap.title}`}
+                    src={cap.img}
+                    alt={cap.title}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      activeIndex === i ? "opacity-100 scale-100" : "opacity-0 scale-110 pointer-events-none"
+                    }`}
+                  />
+                ))}
+
+                {/* Gradient Overlay for Readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#262119] via-[#262119]/20 to-transparent pointer-events-none" />
+                
+                {/* Contextual Tag */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-[#F5F1E0]">
+                  <div className="overflow-hidden mb-2">
+                    <span 
+                      className="text-xs uppercase tracking-[0.2em] font-bold text-[#CF2D26] block transform transition-transform duration-[800ms] ease-out"
+                      key={`tag-${activeIndex}`} // Forces re-animation on index change
+                      style={{ animation: "slideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards" }}
+                    >
+                      {CAPABILITIES_DATA[activeIndex].title}
+                    </span>
+                  </div>
+                  <div className="h-[2px] w-12 bg-[#CF2D26] opacity-50" />
                 </div>
               </div>
-            </div>
-          ))}
+
+              <FadeReveal delay={350} className="mt-10 pt-8 border-l-2 pl-6 lg:pl-8" style={{ borderColor: COLORS.red }}>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight leading-snug" style={{ color: COLORS.charcoal }}>
+                  We are not consultants advising from the outside. <span className="text-[#CF2D26] italic font-serif lowercase block mt-1">We become part of the building process.</span>
+                </p>
+              </FadeReveal>
+            </FadeReveal>
+          </div>
+
         </div>
       </div>
+      
+      {/* Inline Keyframes for minor visual touches */}
+      <style>{`
+        @keyframes slideUp {
+          from { transform: translateY(100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 }
-
 function ClosingCTA() {
   return (
     <section className="relative w-full min-h-[70svh] flex flex-col justify-center py-20 overflow-hidden" style={{ backgroundColor: COLORS.red }}>
@@ -580,7 +707,7 @@ function Home() {
       <Hero loaded={loaded} />
       <Intro />
       <Ecosystem />
-      <Ventures />
+      <Capabilities />
       <ClosingCTA />
     </main>
   );
