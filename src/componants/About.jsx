@@ -176,7 +176,7 @@ function About() {
 
         {/* Viewport-Scaling Massive Headline */}
         <div className="pt-8 pb-12 md:pt-12 md:pb-16 w-full">
-          <h1 className="text-[14vw] sm:text-[11vw] leading-[0.8] font-light tracking-tighter uppercase text-[#211D1B]" style={fontDisplay}>
+          <h1 className="text-[10vw] sm:text-[9vw] lg:text-[8vw] leading-[0.88] font-light tracking-tight uppercase text-[#211D1B]" style={fontDisplay}>
             <div className="flex">
               <TextMask delay={200}>ARCHITECTING</TextMask>
             </div>
@@ -207,7 +207,7 @@ function About() {
           </div>
 
           {/* Column 2: Main Hero Image */}
-          <div className="lg:col-span-6 h-[50vh] sm:h-[60vh] lg:h-auto relative group order-1 lg:order-2 z-10">
+          <div className="lg:col-span-6 h-[52vh] sm:h-[58vh] lg:h-auto relative group order-1 lg:order-2 z-10">
             <ImageMask src="/about.png" alt="Architecting the future" delay={300} className="w-full h-full shadow-2xl" imgClassName="object-cover object-center" />
             
             {/* Spinning/Floating Red Badge */}
