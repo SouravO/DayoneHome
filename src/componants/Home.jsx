@@ -328,7 +328,7 @@ function Hero({ loaded }) {
         <div className="mt-12 lg:mt-24 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 lg:gap-24">
           <FadeReveal delay={600} className="max-w-xl">
             <p className="text-xl md:text-2xl lg:text-[1.6rem] leading-relaxed font-medium" style={{ color: "rgba(245, 241, 224, 0.85)" }}>
-              DayOne Ventures is a studio building, operating and growing businesses across industries.
+              Dayone Ventures creates, structures, launches and scales new companies across India, the Middle East and global markets.
             </p>
           </FadeReveal>
           
@@ -355,22 +355,22 @@ function Intro() {
           {/* Massive Typographic Statement */}
           <div className="w-full lg:w-[65%] shrink-0">
             <h2 className="text-[12vw] lg:text-[8vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-              <TextReveal>We build</TextReveal>
-              <TextReveal delay={150}>more than</TextReveal>
+              <TextReveal>A venture</TextReveal>
+              <TextReveal delay={150}>studio built</TextReveal>
               <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block">
-                <TextReveal delay={300}>ideas.</TextReveal>
+                <TextReveal delay={300}>for day one.</TextReveal>
               </span>
             </h2>
             
             <div className="mt-16 lg:mt-24 max-w-2xl grid gap-8 border-l-2 pl-6 lg:pl-10" style={{ borderColor: COLORS.red }}>
               <FadeReveal delay={200}>
                 <p className="text-xl md:text-2xl leading-relaxed font-medium" style={{ color: COLORS.charcoalMuted }}>
-                  DayOne is built around the belief that strong businesses are created when opportunity meets disciplined execution.
+                  Dayone Ventures creates, structures, launches and scales new companies, working alongside founders and institutions.
                 </p>
               </FadeReveal>
               <FadeReveal delay={300}>
                 <p className="text-lg md:text-xl leading-relaxed" style={{ color: COLORS.charcoalMuted }}>
-                  We bring strategy, creativity, technology, and operational thinking together to move from an early idea to something scalable and enduring.
+                  We work across business strategy, product development, brand building, technology, go-to-market, operations and fundraising preparation.
                 </p>
               </FadeReveal>
             </div>
@@ -441,14 +441,14 @@ function Ecosystem() {
       <div className="px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto relative z-10">
         <div className="max-w-4xl">
           <h2 className="text-[11vw] lg:text-[7vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-            <TextReveal>Many Industries.</TextReveal>
+            <TextReveal>We build</TextReveal>
             <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block mt-2 lg:mt-4">
-              <TextReveal delay={200}>One mindset.</TextReveal>
+              <TextReveal delay={200}>for everyday life.</TextReveal>
             </span>
           </h2>
           <FadeReveal delay={300} className="mt-12 lg:mt-16">
             <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl font-medium" style={{ color: COLORS.charcoalMuted }}>
-              DayOne explores and builds opportunities across markets, bringing the same entrepreneurial discipline to every venture.
+              Dayone focuses on large, repeat-use markets where consumer behaviour, innovation and distribution create significant enterprise value.
             </p>
           </FadeReveal>
         </div>
@@ -659,16 +659,16 @@ function ClosingCTA() {
       <div className="relative z-10 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto w-full text-center flex flex-col items-center">
         
         <h2 className="text-[14vw] lg:text-[11vw] font-black uppercase leading-[0.8] tracking-tighter" style={{ color: COLORS.cream }}>
-          <TextReveal>What&rsquo;s</TextReveal>
-          <TextReveal delay={100}>Your</TextReveal>
+          <TextReveal>Great</TextReveal>
+          <TextReveal delay={100}>Companies</TextReveal>
           <span className="font-serif italic lowercase tracking-tight text-[#9A302B] mix-blend-multiply block mt-2 lg:mt-4">
-            <TextReveal delay={200}>day one?</TextReveal>
+            <TextReveal delay={200}>have a day one.</TextReveal>
           </span>
         </h2>
 
         <FadeReveal delay={300} className="mt-12 lg:mt-20 max-w-2xl mx-auto">
           <p className="text-xl md:text-2xl lg:text-[1.7rem] leading-snug font-medium" style={{ color: "rgba(245, 241, 224, 0.9)" }}>
-            Every business has a first decision, first customer, and first step. We&rsquo;re interested in what comes next.
+            The first idea. The first prototype. The first customer. The first impossible ambition.
           </p>
         </FadeReveal>
 

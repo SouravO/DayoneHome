@@ -101,29 +101,29 @@ function ImageMask({ src, alt, className = "", imgClassName = "", delay = 0 }) {
 /* ------------------------------------------------------------------ */
 /* Data                                                               */
 /* ------------------------------------------------------------------ */
-const journey = ["OPPORTUNITY", "IDEA", "BUILD", "OPERATE", "GROW", "SCALE"];
+const journey = ["ASSESS", "EXPERIMENT", "INTEGRATE", "SCALE"];
 
 const stages = [
   {
-    title: "DISCOVER",
-    copy: "Identify opportunities, market gaps and customer problems.",
+    title: "ASSESS",
+    copy: "Understand the problem, market, customer and founder.",
   },
   {
-    title: "BUILD",
-    copy: "Shape strategy, brand, product, technology and the business foundation.",
+    title: "EXPERIMENT",
+    copy: "Test assumptions through interviews, prototypes, pilots and real transactions.",
   },
   {
-    title: "OPERATE",
-    copy: "Work across people, systems, marketing, sales and operations.",
+    title: "INTEGRATE",
+    copy: "Bring together product, brand, technology, team, operations and capital.",
   },
   {
     title: "SCALE",
-    copy: "Turn traction into sustainable growth and stronger businesses.",
+    copy: "Expand repeatable revenue, distribution and organisational capability.",
   },
 ];
 
-const traditional = ["Idea", "Separate Specialists", "Multiple Handoffs", "Execution"];
-const dayone = ["Opportunity", "Strategy", "Brand", "Technology", "Operations", "Growth"];
+const traditional = ["Incubator", "Accelerator", "VC Fund", "Consulting Firm"];
+const dayone = ["Strategy", "Product", "Technology", "Brand", "Operations", "Growth"];
 
 /* ------------------------------------------------------------------ */
 /* Page                                                               */
@@ -178,10 +178,10 @@ function About() {
         <div className="pt-8 pb-12 md:pt-12 md:pb-16 w-full">
           <h1 className="text-[10vw] sm:text-[9vw] lg:text-[8vw] leading-[0.88] font-light tracking-tight uppercase text-[#211D1B]" style={fontDisplay}>
             <div className="flex">
-              <TextMask delay={200}>ARCHITECTING</TextMask>
+              <TextMask delay={200}>WE DON'T JUST</TextMask>
             </div>
             <div className="flex items-center gap-4 sm:gap-8 mt-2 sm:mt-4">
-              <TextMask delay={350} className="italic text-[#DC2D26]">THE FUTURE.</TextMask>
+              <TextMask delay={350} className="italic text-[#DC2D26]">BACK STARTUPS.</TextMask>
               {/* Dynamic Line filling the rest of the space */}
               <Reveal delay={600} className="flex-1 hidden md:block">
                 <div className="h-[2px] w-full bg-[#211D1B]/15 mt-4 sm:mt-8" />
@@ -197,7 +197,7 @@ function About() {
           <div className="lg:col-span-3 flex flex-col justify-end lg:pb-12 order-2 lg:order-1">
             <Reveal delay={500}>
               <p className="text-xl sm:text-2xl text-[#211D1B] font-light leading-snug mb-10" style={fontDisplay}>
-                We don't just invest. We co-create, build, and scale categorical leaders from the ground up.
+                We build them. Dayone is an execution-led venture studio, turning ideas and early founders into structured, scalable ventures.
               </p>
               <button className="group flex items-center gap-4 text-xs uppercase tracking-[0.2em] font-semibold text-[#211D1B] hover:text-[#DC2D26] transition-colors">
                 <span className="w-12 h-[1px] bg-current transition-all duration-300 group-hover:w-16" />
@@ -208,14 +208,14 @@ function About() {
 
           {/* Column 2: Main Hero Image */}
           <div className="lg:col-span-6 h-[52vh] sm:h-[58vh] lg:h-auto relative group order-1 lg:order-2 z-10">
-            <ImageMask src="/about.png" alt="Architecting the future" delay={300} className="w-full h-full shadow-2xl" imgClassName="object-cover object-center" />
+            <ImageMask src="/about.png" alt="Dayone — an execution-led venture studio" delay={300} className="w-full h-full shadow-2xl" imgClassName="object-cover object-center" />
             
             {/* Spinning/Floating Red Badge */}
             <Reveal delay={800} className="absolute -bottom-8 -left-8 sm:-bottom-12 sm:-left-12 z-20 hidden sm:block">
               <div className="bg-[#DC2D26] text-[#F4F0E2] rounded-full w-32 h-32 flex items-center justify-center text-xs tracking-widest uppercase transform rotate-[-15deg] group-hover:rotate-0 transition-transform duration-700 shadow-xl border-4 border-[#F4F0E2]">
                 <div className="text-center font-medium leading-tight">
-                  <span className="block mb-1">Built</span>
-                  <span className="block border-t border-[#F4F0E2]/30 pt-1">To Last</span>
+                  <span className="block mb-1">Never</span>
+                  <span className="block border-t border-[#F4F0E2]/30 pt-1">Ordinary</span>
                 </div>
               </div>
             </Reveal>
@@ -224,7 +224,7 @@ function About() {
           {/* Column 3: Secondary Image + Accent Card */}
           <div className="lg:col-span-3 flex flex-col gap-6 order-3">
             <div className="flex-1 relative hidden lg:block overflow-hidden shadow-lg">
-              <ImageMask src="/aboutbanner.png" alt="Studio details" delay={700} className="w-full h-full" imgClassName="object-cover" />
+              <ImageMask src="/aboutbanner.png" alt="Startup Park — Dayone's studio infrastructure" delay={700} className="w-full h-full" imgClassName="object-cover" />
             </div>
             
             <Reveal delay={900}>
@@ -235,8 +235,8 @@ function About() {
                 </div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] leading-loose mt-12 text-[#F4F0E2]/80">
                   Strategy <br/>
-                  Design <br/>
-                  Engineering <br/>
+                  Technology <br/>
+                  Brand <br/>
                   Growth
                 </p>
               </div>
@@ -258,9 +258,9 @@ function About() {
             <div className="lg:col-span-8">
               <Reveal>
                 <h2 className="text-4xl sm:text-6xl lg:text-8xl font-light leading-[0.95] tracking-tight" style={fontDisplay}>
-                  <span className="italic font-light text-[#ECE3CE]">IDEAS ARE BEGINNINGS.</span>
+                  <span className="italic font-light text-[#ECE3CE]">IDEAS ARE EVERYWHERE.</span>
                   <br />
-                  <span className="font-semibold text-[#F4F0E2] tracking-normal">BUSINESSES ARE BUILT.</span>
+                  <span className="font-semibold text-[#F4F0E2] tracking-normal">EXECUTION IS NOT.</span>
                 </h2>
               </Reveal>
             </div>
@@ -268,7 +268,7 @@ function About() {
             <div className="lg:col-span-4 lg:pt-4">
               <Reveal delay={200}>
                 <p className="text-lg sm:text-xl text-[#F4F0E2]/70 leading-relaxed font-light">
-                  An idea is only the beginning. Building something meaningful requires understanding the opportunity, knowing the customer, making decisions, testing assumptions and staying close to execution.
+                  Most promising ventures struggle without the right team, structured validation, integrated execution and real distribution — closing that gap is where Dayone begins.
                 </p>
               </Reveal>
             </div>
@@ -318,7 +318,7 @@ function About() {
           <div className="mt-20 relative">
             <Reveal delay={200}>
               <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] overflow-hidden group border border-[#F4F0E2]/20 shadow-2xl">
-                <ImageMask src="/aboutbanner.png" alt="The DayOne Mindset" delay={200} className="w-full h-full" imgClassName="brightness-95 group-hover:brightness-100" />
+                <ImageMask src="/aboutbanner.png" alt="The Dayone AXIS Methodology" delay={200} className="w-full h-full" imgClassName="brightness-95 group-hover:brightness-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#211D1B] via-transparent to-transparent opacity-60" />
               </div>
             </Reveal>
@@ -334,9 +334,9 @@ function About() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
             <Reveal>
               <h2 className="text-4xl sm:text-6xl lg:text-8xl font-light leading-[0.95] tracking-tight" style={fontDisplay}>
-                FROM FIRST IDEA
+                ADAPTIVE EXECUTION
                 <br />
-                <span className="italic font-normal text-[#DC2D26]">TO REAL BUSINESS.</span>
+                <span className="italic font-normal text-[#DC2D26]">AND INNOVATION.</span>
               </h2>
             </Reveal>
 
@@ -414,10 +414,10 @@ function About() {
           <div className="snap-start shrink-0 w-[85vw] sm:w-[500px] lg:w-[580px] p-8 sm:p-12 min-h-[460px] flex flex-col justify-between bg-[#DC2D26] text-[#F4F0E2] border border-[#DC2D26]">
             <div className="w-3 h-3 rounded-full bg-[#F4F0E2]" />
             <p className="text-2xl sm:text-3xl lg:text-4xl font-light leading-snug" style={fontDisplay}>
-              DayOne stays close to the work — from identifying the opportunity to building the momentum required for growth.
+              AXIS connects how we think, build and decide — a continuous loop, not a one-time checklist.
             </p>
             <div className="pt-8 border-t border-[#F4F0E2]/20 text-xs uppercase tracking-widest font-medium">
-              Continuous Studio Involvement
+              The Dayone AXIS Methodology
             </div>
           </div>
         </div>
@@ -431,7 +431,7 @@ function About() {
         <div className="px-6 py-16 sm:px-10 sm:py-24 lg:px-16 mx-auto max-w-7xl border-b border-[#F4F0E2]/10">
           <Reveal>
             <h2 className="text-4xl sm:text-6xl lg:text-8xl font-light leading-[0.95] tracking-tight max-w-4xl" style={fontDisplay}>
-              BUILT AROUND <span className="italic text-[#DC2D26] font-normal">THE WORK.</span>
+              A DIFFERENT KIND <span className="italic text-[#DC2D26] font-normal">OF PLATFORM.</span>
             </h2>
           </Reveal>
 
@@ -443,7 +443,7 @@ function About() {
             <div className="space-y-10">
               <Reveal>
                 <div className="text-xs uppercase tracking-[0.2em] text-[#F4F0E2]/40 mb-6 font-medium">
-                  Traditional Approach
+                  Traditional Models
                 </div>
               </Reveal>
               <div className="space-y-6">
@@ -491,9 +491,9 @@ function About() {
 
           <div className="relative z-10 max-w-5xl mx-auto flex flex-col items-center">
             <h2 className="text-4xl sm:text-6xl lg:text-8xl font-light leading-[0.95] tracking-tight text-[#F4F0E2]" style={fontDisplay}>
-              <div className="block"><TextMask delay={0}>EVERY ESTABLISHED</TextMask></div>
-              <div className="block"><TextMask delay={150}>BUSINESS ONCE HAD</TextMask></div>
-              <div className="block mt-2"><TextMask delay={300} className="italic font-semibold text-[#F4F0E2]">A DAY ONE.</TextMask></div>
+              <div className="block"><TextMask delay={0}>THINK FREELY.</TextMask></div>
+              <div className="block"><TextMask delay={150}>BUILD SYSTEMATICALLY.</TextMask></div>
+              <div className="block mt-2"><TextMask delay={300} className="italic font-semibold text-[#F4F0E2]">OWN THE OUTCOME.</TextMask></div>
             </h2>
 
             <Reveal delay={450} y="translate-y-10">
@@ -530,4 +530,4 @@ function About() {
   );
 }
 
-export default About; 
+export default About;
