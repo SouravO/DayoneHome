@@ -1,24 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 
-const PHILOSOPHY_STATES = [
+const BUILD_TOGETHER_STATES = [
   {
-    title: "The best ideas",
-    desc: "We're ruthless about only committing resources and capital to the most promising ideas.",
+    title: "Founders bring",
+    desc: "Ambition, insight and a market opportunity worth building around.",
     bg: "#E3B651",
   },
   {
-    title: "Focus on building",
-    desc: "Spend your time building while our team of experts does the rest.",
+    title: "Dayone brings",
+    desc: "The AXIS methodology, multidisciplinary teams, infrastructure and relationships to build it.",
     bg: "#181512",
   },
   {
-    title: "Unfair advantage",
-    desc: "Go to market faster with the best ideas, playbooks, team, and flexible funding structure.",
+    title: "Investors bring",
+    desc: "Patient, strategic and growth capital that follows evidence, not enthusiasm.",
     bg: "#3B6946",
   },
   {
-    title: "Outsized impact",
-    desc: "Our goal is to build the largest and fastest growing companies, giving our co-founders more opportunity for upside.",
+    title: "Together we create",
+    desc: "Validated ventures, faster execution, stronger governance and scalable companies.",
     bg: "#E09C83",
   },
 ];
@@ -65,26 +65,26 @@ function useScrollProgress(ref) {
 export default function BuildWithUs() {
   const containerRef = useRef(null);
   const progress = useScrollProgress(containerRef);
-  const activeIndex = Math.min(PHILOSOPHY_STATES.length - 1, Math.floor(progress * PHILOSOPHY_STATES.length));
+  const activeIndex = Math.min(BUILD_TOGETHER_STATES.length - 1, Math.floor(progress * BUILD_TOGETHER_STATES.length));
 
   return (
     <section ref={containerRef} className="relative w-full h-[400vh]" style={{ backgroundColor: "#F4F0E2" }}>
       <div className="sticky top-0 w-full h-[100svh] flex flex-col lg:flex-row items-center px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto pt-24 lg:pt-32">
         <div className="w-full lg:w-1/2 flex flex-col justify-center lg:pr-16 shrink-0 z-10 pb-8 lg:pb-0">
           <h2 className="text-[10vw] lg:text-[5.5vw] font-medium leading-[1.05] tracking-tight mb-6 lg:mb-8" style={{ color: "#211D1B" }}>
-            Find the<br />
-            company you<br />
-            were meant<br />
-            to build
+            Built with<br />
+            founders.<br />
+            Powered by<br />
+            execution.
           </h2>
           <p className="text-lg md:text-xl leading-relaxed max-w-md" style={{ color: "rgba(33, 29, 27, 0.65)" }}>
-            The traditional company creation process is a little like winning the lottery. We built DayOne to change that.
+            Scaled with intelligent capital — because every venture we build compounds three things at once: founder ambition, embedded execution and long-term capital.
           </p>
         </div>
 
         <div className="w-full lg:w-1/2 flex items-center justify-center z-0 pb-16 lg:pb-0">
           <div className="relative w-full max-w-[28rem] mx-auto aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl">
-            {PHILOSOPHY_STATES.map((state, index) => (
+            {BUILD_TOGETHER_STATES.map((state, index) => (
               <div
                 key={state.title}
                 className="absolute inset-0 flex flex-col items-center justify-center p-10 text-center transition-opacity duration-700 ease-in-out"
