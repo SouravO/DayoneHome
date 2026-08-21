@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const COLORS = {
   cream: "#F5F1E0",
@@ -275,6 +276,7 @@ const _PHILOSOPHY_STATES = [
 
 function Hero({ loaded }) {
   const [imgRef, imgOffset] = useParallax(0.15);
+  const navigate = useNavigate();
 
   return (
     <section className="relative h-[100svh] min-h-0 w-full flex flex-col justify-end overflow-hidden bg-[#262119]">
@@ -333,7 +335,7 @@ function Hero({ loaded }) {
           </FadeReveal>
           
           <FadeReveal delay={750} distance="translate-y-6" className="shrink-0">
-            <PremiumButton dark>Explore ventures</PremiumButton>
+            <PremiumButton dark onClick={() => navigate("/services")}>Explore ventures</PremiumButton>
           </FadeReveal>
         </div>
       </div>
