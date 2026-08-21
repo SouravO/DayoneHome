@@ -79,7 +79,7 @@ function TextReveal({ children, delay = 0, className = "" }) {
   const [ref, visible] = useReveal();
   
   return (
-    <div ref={ref} className={`overflow-hidden py-1 ${className}`}>
+    <div ref={ref} className={`overflow-hidden py-2 ${className}`}>
       <div
         className="transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
         style={{
@@ -277,7 +277,7 @@ function Hero({ loaded }) {
   const [imgRef, imgOffset] = useParallax(0.15);
 
   return (
-    <section className="relative min-h-[100svh] w-full flex flex-col justify-end overflow-hidden bg-[#262119]">
+    <section className="relative h-[100svh] min-h-0 w-full flex flex-col justify-end overflow-hidden bg-[#262119]">
       
       {/* 1. Cinematic Full-Screen Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -314,18 +314,18 @@ function Hero({ loaded }) {
       </div>
 
       {/* 4. Cinematic Foreground Typography & Content */}
-      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-6 sm:px-10 lg:px-16 2xl:px-24 pb-16 lg:pb-24 pt-32">
+      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-6 sm:px-10 lg:px-16 2xl:px-24 pb-8 lg:pb-10 pt-24 lg:pt-28">
         <div className="max-w-[90vw] lg:max-w-[80vw]">
-          <h1 className="flex flex-col text-[14vw] lg:text-[10vw] font-black uppercase leading-[0.82] tracking-tighter" style={{ color: COLORS.cream }}>
+          <h1 className="flex flex-col text-[14vw] lg:text-[8vw] font-black uppercase leading-[0.82] tracking-tighter" style={{ color: COLORS.cream }}>
             <TextReveal delay={100}>Every</TextReveal>
             <TextReveal delay={250} className="-mt-1 lg:-mt-4">Business</TextReveal>
-            <span className="font-serif italic lowercase tracking-tight mt-2 lg:mt-5 text-[#CF2D26] drop-shadow-2xl flex">
-              <TextReveal delay={400} className="pl-4 lg:pl-[12%]">has a day one.</TextReveal>
+            <span className="font-serif italic lowercase tracking-tight mt-2 lg:mt-5 text-[11vw] sm:text-[10vw] lg:text-[7vw] leading-[1] text-[#CF2D26] drop-shadow-2xl flex">
+              <TextReveal delay={400} className="pb-3">has a day one.</TextReveal>
             </span>
           </h1>
         </div>
 
-        <div className="mt-12 lg:mt-24 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 lg:gap-24">
+        <div className="mt-8 lg:mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-10">
           <FadeReveal delay={600} className="max-w-xl">
             <p className="text-xl md:text-2xl lg:text-[1.6rem] leading-relaxed font-medium" style={{ color: "rgba(245, 241, 224, 0.85)" }}>
               Dayone Ventures creates, structures, launches and scales new companies across India, the Middle East and global markets.
@@ -357,7 +357,7 @@ function Intro() {
             <h2 className="text-[12vw] lg:text-[8vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
               <TextReveal>A venture</TextReveal>
               <TextReveal delay={150}>studio built</TextReveal>
-              <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block">
+              <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block">
                 <TextReveal delay={300}>for day one.</TextReveal>
               </span>
             </h2>
@@ -430,7 +430,7 @@ function Ecosystem() {
         <div className="max-w-4xl">
           <h2 className="text-[11vw] lg:text-[7vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
             <TextReveal>We build</TextReveal>
-            <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block mt-2 lg:mt-4">
+            <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block mt-2 lg:mt-4">
               <TextReveal delay={200}>for everyday life.</TextReveal>
             </span>
           </h2>
@@ -497,7 +497,7 @@ function Capabilities() {
           </span>
           <h2 className="text-[10vw] lg:text-[6.5vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
             <TextReveal>Built for</TextReveal>
-            <span className="font-serif italic lowercase tracking-tight text-[#CF2D26] block mt-1">
+            <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block mt-1">
               <TextReveal delay={150}>day one.</TextReveal>
             </span>
           </h2>
@@ -616,7 +616,7 @@ function Capabilities() {
 
               <FadeReveal delay={350} className="mt-10 pt-8 border-l-2 pl-6 lg:pl-8" style={{ borderColor: COLORS.red }}>
                 <p className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight leading-snug" style={{ color: COLORS.charcoal }}>
-                  We are not consultants advising from the outside. <span className="text-[#CF2D26] italic font-serif lowercase block mt-1">We become part of the building process.</span>
+                  We are not consultants advising from the outside. <span className="text-[#CF2D26] italic font-serif lowercase leading-[1] block mt-1">We become part of the building process.</span>
                 </p>
               </FadeReveal>
             </FadeReveal>
@@ -649,7 +649,7 @@ function ClosingCTA() {
         <h2 className="text-[14vw] lg:text-[11vw] font-black uppercase leading-[0.8] tracking-tighter" style={{ color: COLORS.cream }}>
           <TextReveal>Great</TextReveal>
           <TextReveal delay={100}>Companies</TextReveal>
-          <span className="font-serif italic lowercase tracking-tight text-[#9A302B] mix-blend-multiply block mt-2 lg:mt-4">
+          <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#9A302B] mix-blend-multiply block mt-2 lg:mt-4">
             <TextReveal delay={200}>have a day one.</TextReveal>
           </span>
         </h2>
