@@ -399,24 +399,12 @@ function Intro() {
 
 function Ecosystem() {
   const marqueeImages = [
-    { src: '/about.png' },
-    { src: '/Home.png' },
-    { src: '/Banner.png' },
-    { src: '/quote.png' },
-    { src: '/Hero.png' },
-    { src: '/image.png' },
-    { src: '/aboutbanner.png' },
-    { src: '/image1.png' },
-    { src: '/service.png' },
-    { src: '/quote2.png' },
-    { src: '/quote3.png' },
-    { src: '/business_strategy.png' },
-    { src: '/product_development.png' },
-    { src: '/Brand_Building.png' },
-    { src: '/Technology.png' },
-    { src: '/Go-to-Market.png' },
-    { src: '/Operations.png' },
-    { src: '/Fundraising_Preparation.png' },
+    { src: '/scroll1.png' },
+    { src: '/scroll2.png' },
+    { src: '/scroll3.png' },
+    { src: '/scroll4.png' },
+    { src: '/scroll5.png' },
+    { src: '/scroll6.png' },
   ];
 
   return (
