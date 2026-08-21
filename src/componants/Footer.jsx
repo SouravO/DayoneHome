@@ -60,29 +60,77 @@ function Footer() {
                         <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
                             Social
                         </h3>
-                        <div>
-                            <a
-                                href="https://www.instagram.com/dayone_venturestudio/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
-                            >
-                                <span>@dayone_venturestudio</span>
-                                <svg
-                                    className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-neutral-400 group-hover:text-[#E63946]"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
+                        <ul className="space-y-3">
+                            <li>
+                                <a
+                                    href="https://www.instagram.com/dayone_venturestudio/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
                                 >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M7 17L17 7M17 7H7M17 7V17"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
+                                    <span>Instagram</span>
+                                    <svg
+                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-neutral-400 group-hover:text-[#E63946]"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M7 17L17 7M17 7H7M17 7V17"
+                                        />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=61574333967955&mibextid=rS40aB7S9Ucbxw6v"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
+                                >
+                                    <span>Facebook</span>
+                                    <svg
+                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-neutral-400 group-hover:text-[#E63946]"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M7 17L17 7M17 7H7M17 7V17"
+                                        />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.linkedin.com/company/dayone-venture-studio/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
+                                >
+                                    <span>LinkedIn</span>
+                                    <svg
+                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-neutral-400 group-hover:text-[#E63946]"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M7 17L17 7M17 7H7M17 7V17"
+                                        />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 

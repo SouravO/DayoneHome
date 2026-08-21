@@ -28,6 +28,21 @@ const INTEREST_OPTIONS = [
 const CONTACT_EMAIL = "dayoneventurestudio@gmail.com";
 const CONTACT_PHONE = "8129957753";
 
+const SOCIAL_LINKS = [
+    {
+        label: "Instagram",
+        href: "https://www.instagram.com/dayone_venturestudio?igsh=OHdpM2p5dGttaTB3&igsi=OHdpM2p5dGttaTB3",
+    },
+    {
+        label: "Facebook",
+        href: "https://www.facebook.com/profile.php?id=61574333967955&mibextid=rS40aB7S9Ucbxw6v",
+    },
+    {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/dayone-venture-studio/",
+    },
+];
+
 const MAP_QUERY =
     "Startup Park, Total Mall, opposite Madiwala Police Station, Koramangala 2nd Block, Bengaluru, Karnataka 560068";
 const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
@@ -219,6 +234,26 @@ export default function Contact() {
                                     {CONTACT_PHONE}
                                     <span className="absolute -bottom-1 left-0 h-[1px] w-full origin-right scale-x-0 bg-[#DD2D26] transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100" />
                                 </a>
+                            </div>
+
+                            {/* Social Links */}
+                            <div className="flex items-center gap-4 text-[13px] font-bold uppercase tracking-[0.1em] mt-6">
+                                {SOCIAL_LINKS.map((social, idx) => (
+                                    <span key={social.label} className="flex items-center gap-4">
+                                        {idx > 0 && (
+                                            <span className="text-[#211D18]/20" aria-hidden="true">/</span>
+                                        )}
+                                        <a
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group relative w-fit text-[#211D18]/50 transition-colors duration-300 hover:text-[#DD2D26]"
+                                        >
+                                            {social.label}
+                                            <span className="absolute -bottom-1 left-0 h-[1px] w-full origin-right scale-x-0 bg-[#DD2D26] transition-transform duration-500 ease-out group-hover:origin-left group-hover:scale-x-100" />
+                                        </a>
+                                    </span>
+                                ))}
                             </div>
                         </div>
                     </div>
