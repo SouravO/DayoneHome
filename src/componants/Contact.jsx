@@ -26,7 +26,7 @@ const INTEREST_OPTIONS = [
 ];
 
 const CONTACT_EMAIL = "dayoneventurestudio@gmail.com";
-const CONTACT_PHONE = "8129957753";
+const CONTACT_PHONE = "8078928275";
 
 const SOCIAL_LINKS = [
     {
