@@ -109,7 +109,7 @@ export const Intro = () => {
           left: 0;
           width: 100vw;
           height: 100vh;
-          background-color: #F5F1E0;
+          background-color: #F4F1DF;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -127,7 +127,7 @@ export const Intro = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
           font-size: clamp(2.8rem, 10vw, 6.5rem);
           width: 100%;
           height: 100%;
@@ -159,7 +159,7 @@ export const Intro = () => {
         .word {
           display: inline-block;
           white-space: nowrap;
-          color: #262119;
+          color: #221F1F;
           font-weight: 500;
           letter-spacing: -0.02em;
           will-change: transform, color;
@@ -168,7 +168,7 @@ export const Intro = () => {
 
         .word-one.swapped {
           animation: swapOne 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-          color: #CF2D26;
+          color: #DD3027;
         }
 
         .word-day.swapped {

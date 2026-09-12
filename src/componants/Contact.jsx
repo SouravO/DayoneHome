@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 // panel   #FBF9F0 — form / map surface, a shade lighter than the page
 // red     #DD2D26 — DayOne red, used only for accents and interactive states
 // ink     #211D18 — deep charcoal text
-const DISPLAY_FONT = '"Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif';
+const DISPLAY_FONT = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 
 const OFFICE_ADDRESS_LINES = [
     "Startup Park",

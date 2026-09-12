@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 import DayOneLogo from "./DayOneLogo" // Adjust import path as needed
 
-// Brand palette — kept identical to Contact.jsx / Footer.jsx for consistency.
-// cream #F4F2E3 — nav background · red #DD2D26 — accent · ink #211D18 — text
+// Brand palette: paper cream, DayOne red, and ink black.
 
 const NAV_LINKS = [
     { label: "Home", to: "/" },
@@ -29,17 +28,17 @@ function Navbar() {
     const linkClass = ({ isActive }) =>
         `transition-colors duration-300 ${
             isActive
-                ? "text-[#DD2D26]"
+                ? "text-[#DD3027]"
                 : transparent && onHome
-                    ? "text-[#F5F1E0]/80 hover:text-white"
-                    : "text-[#211D18]/60 hover:text-[#DD2D26]"
+                    ? "text-[#F4F1DF]/80 hover:text-white"
+                    : "text-[#221F1F]/60 hover:text-[#DD3027]"
         }`
 
     return (
         <nav
             className={`fixed inset-x-0 top-0 z-30 border-b px-6 transition-all duration-300 sm:px-10 ${
                 scrolled || open
-                    ? "border-[#211D18]/10 bg-[#F4F2E3]/95 shadow-sm backdrop-blur"
+                    ? "border-[#221F1F]/10 bg-[#F4F1DF]/95 shadow-sm backdrop-blur"
                     : "border-transparent bg-transparent"
             }`}
         >
@@ -73,14 +72,14 @@ function Navbar() {
                 >
                     <span
                         className={`h-px w-5 transition-colors duration-300 ${
-                            transparent && onHome ? "bg-[#F5F1E0]" : "bg-[#211D18]"
+                            transparent && onHome ? "bg-[#F4F1DF]" : "bg-[#221F1F]"
                         } transition-transform duration-300 ${
                             open ? "translate-y-[3px] rotate-45" : ""
                         }`}
                     />
                     <span
                         className={`h-px w-5 transition-colors duration-300 ${
-                            transparent && onHome ? "bg-[#F5F1E0]" : "bg-[#211D18]"
+                            transparent && onHome ? "bg-[#F4F1DF]" : "bg-[#221F1F]"
                         } transition-transform duration-300 ${
                             open ? "-translate-y-[3px] -rotate-45" : ""
                         }`}

@@ -2,23 +2,23 @@ import { useEffect, useRef, useState } from "react";
 
 const BUILD_TOGETHER_STATES = [
   {
-    title: "Founders bring",
-    desc: "Ambition, insight and a market opportunity worth building around.",
+    title: "For founders",
+    desc: "You remain the founder. You just do not build alone.",
     bg: "#E3B651",
   },
   {
-    title: "Dayone brings",
-    desc: "The AXIS methodology, multidisciplinary teams, infrastructure and relationships to build it.",
+    title: "The DAYONE system",
+    desc: "Strategy, product, brand and growth — built as one shared system around every venture.",
     bg: "#181512",
   },
   {
-    title: "Investors bring",
-    desc: "Patient, strategic and growth capital that follows evidence, not enthusiasm.",
+    title: "For investors",
+    desc: "Capital should accelerate a business. Not rescue one.",
     bg: "#3B6946",
   },
   {
-    title: "Together we create",
-    desc: "Validated ventures, faster execution, stronger governance and scalable companies.",
+    title: "Same objective",
+    desc: "Different perspectives. Same objective. Build better companies.",
     bg: "#E09C83",
   },
 ];
@@ -72,13 +72,13 @@ export default function BuildWithUs() {
       <div className="sticky top-0 w-full h-[100svh] flex flex-col lg:flex-row items-center px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto pt-24 lg:pt-32">
         <div className="w-full lg:w-1/2 flex flex-col justify-center lg:pr-16 shrink-0 z-10 pb-8 lg:pb-0">
           <h2 className="text-[10vw] lg:text-[5.5vw] font-medium leading-[1.05] tracking-tight mb-6 lg:mb-8" style={{ color: "#211D1B" }}>
-            Built with<br />
+            Built for<br />
             founders.<br />
-            Powered by<br />
-            execution.
+            Structured for<br />
+            investors.
           </h2>
           <p className="text-lg md:text-xl leading-relaxed max-w-md" style={{ color: "rgba(33, 29, 27, 0.65)" }}>
-            Scaled with intelligent capital — because every venture we build compounds three things at once: founder ambition, embedded execution and long-term capital.
+            For founders, DAYONE is the support system behind the company. For investors, DAYONE is a focused pipeline of startups built with structure, visibility and discipline.
           </p>
         </div>
 

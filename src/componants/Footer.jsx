@@ -10,7 +10,7 @@ function Footer() {
     }
 
     return (
-        <footer className="relative bg-[#0E0E0D] text-[#F5F2EB] pt-20 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-neutral-800/60 selection:bg-[#E63946] selection:text-white">
+        <footer className="relative bg-[#221F1F] text-[#F4F1DF] pt-20 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-[#F4F1DF]/15 selection:bg-[#DD3027] selection:text-white">
             <div className="max-w-7xl mx-auto">
                 {/* INFORMATION & CONTACT GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 py-16 border-b border-neutral-800/80">

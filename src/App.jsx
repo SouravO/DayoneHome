@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-[#F4F1DF]">
         <Intro />
         <Navbar />
         <Routes>

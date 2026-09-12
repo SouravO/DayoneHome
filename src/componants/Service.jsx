@@ -7,21 +7,21 @@ import BuildWithUs from "./BuildWithUs";
 /* Brand Tokens                                                       */
 /* ------------------------------------------------------------------ */
 const c = {
-  cream: "#F4F0E2",
-  creamDeep: "#ECE3CE",
-  red: "#DC2D26",
-  charcoal: "#211D1B",
-  charcoalDark: "#181514",
+  cream: "#F4F1DF",
+  creamDeep: "#E8E4D3",
+  red: "#DD3027",
+  charcoal: "#221F1F",
+  charcoalDark: "#181717",
   textMuted: "rgba(33, 29, 27, 0.65)",
   textDarkMuted: "rgba(244, 240, 226, 0.65)",
 };
 
 const fontDisplay = {
-  fontFamily: "'Fraunces', Georgia, 'Times New Roman', serif",
+  fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
 };
 const fontBody = {
   fontFamily:
-    "'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif",
+    "'Helvetica Neue', Helvetica, Arial, sans-serif",
 };
 
 /* ------------------------------------------------------------------ */
@@ -91,92 +91,95 @@ function TextMask({ children, delay = 0, className = "" }) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Content Data (Strictly preserved, numbers stripped)                */
+/* Content Data — sourced from the DAYONE Website Content PDF          */
+/* (sections not already used on Home / About / BuildWithUs)          */
 /* ------------------------------------------------------------------ */
 const CAPABILITIES = [
   {
-    title: "Venture architecture",
+    title: "Strategy & direction",
     description:
-      "Every venture gains access to a complete building team from day one. We shape the business architecture, structure and execution plan before development begins.",
-    highlights: ["Business Architecture", "Execution Planning", "Team Structuring"],
+      "We stay close to the venture and work on the strategy behind every decision it makes.",
+    highlights: ["Strategic Direction", "Close Support", "Founder Alignment"],
   },
   {
-    title: "Product & technology",
+    title: "Brand & product",
     description:
-      "Product, design and technology come together to support the business model. We translate ideas into usable products, platforms and digital experiences.",
-    highlights: ["Product Design", "Technology Build", "Platform Systems"],
+      "We build the brand and shape the product, giving every venture a clear identity and experience.",
+    highlights: ["Brand Identity", "Product Development", "Customer Experience"],
   },
   {
-    title: "Brand & growth",
+    title: "Go-to-market",
     description:
-      "Brand, marketing and growth are built as one connected system. We help ventures reach their audience, generate demand and build lasting recognition.",
-    highlights: ["Brand Identity", "Demand Generation", "Growth Systems"],
+      "We develop the go-to-market plan that takes a venture from idea to the customers who need it.",
+    highlights: ["Positioning", "Distribution", "Customer Acquisition"],
   },
   {
-    title: "Finance & compliance",
+    title: "Numbers & operations",
     description:
-      "Finance, legal and compliance form the operating backbone of every venture. We put the right structures in place so ventures can grow with confidence.",
-    highlights: ["Financial Structuring", "Legal Framework", "Compliance Systems"],
+      "We monitor the numbers and solve the operational problems that come with building a company.",
+    highlights: ["Performance Monitoring", "Operational Support", "Problem-Solving"],
   },
   {
-    title: "Talent & operations",
+    title: "Team building",
     description:
-      "Talent, operations and administration are designed to help ventures run efficiently. We build the processes, workflows and teams behind every stage.",
-    highlights: ["Talent Acquisition", "Workflow Design", "Operational Systems"],
+      "We help build the team behind every venture, from first hires to leadership.",
+    highlights: ["Hiring", "Team Structuring", "Leadership"],
   },
   {
-    title: "Research & fundraising",
-    description:
-      "Research and development inform every decision, while fundraising and investor preparation keep ventures capital-ready for their next stage of growth.",
-    highlights: ["Market Research", "Investor Readiness", "Capital Preparation"],
+    title: "Capital readiness",
+    description: "When the business is ready, we help prepare it for capital.",
+    highlights: ["Investor Preparation", "Capital Readiness", "Fundraising Support"],
   },
 ];
 
 const PROCESS_STAGES = [
   {
     title: "Discover",
-    description: "Identify meaningful problems and opportunities.",
-    keyFocus: "Problem Discovery",
+    description: "Understand the founder, problem, customer and market.",
+    keyFocus: "Founder & Market Discovery",
   },
   {
     title: "Validate",
-    description: "Test demand, feasibility and willingness to pay.",
-    keyFocus: "Demand Validation",
-  },
-  {
-    title: "Design",
-    description: "Create the business, product and brand architecture.",
-    keyFocus: "Core Architecture",
+    description: "Test demand, business model, pricing and commercial viability.",
+    keyFocus: "Demand & Viability",
   },
   {
     title: "Build",
-    description: "Develop the product, technology, team and operations.",
-    keyFocus: "Execution & Systems",
+    description: "Develop the product, brand, technology, team and operating foundation.",
+    keyFocus: "Product & Foundation",
   },
   {
-    title: "Launch",
-    description: "Enter the market with focused go-to-market execution.",
-    keyFocus: "Market Entry & Testing",
+    title: "Go To Market",
+    description: "Define positioning, launch the venture, build distribution and acquire customers.",
+    keyFocus: "Market Entry",
+  },
+  {
+    title: "Grow",
+    description: "Improve revenue, retention, performance, systems and expansion.",
+    keyFocus: "Revenue & Retention",
   },
   {
     title: "Scale",
-    description: "Strengthen distribution, economics and capital readiness.",
-    keyFocus: "Optimization & Scale",
+    description: "Strengthen leadership, governance, capital strategy and investor readiness.",
+    keyFocus: "Investor Readiness",
   },
 ];
 
 const PRINCIPLES = [
   {
-    title: "Customer value",
-    description: "Every venture solves a clear, recurring and meaningful problem for real customers.",
+    title: "Better validation & founders",
+    description:
+      "Avoidable failure gets reduced through better validation and better founders — the earliest signals of whether a venture is built to last.",
   },
   {
-    title: "Founder alignment",
-    description: "A committed founder accepts shared execution, accountability and the outcome together.",
+    title: "Better economics & systems",
+    description:
+      "Better economics and better operating systems keep ventures financially sound and structurally strong as they grow.",
   },
   {
-    title: "Commercial potential",
-    description: "Repeat demand, scalable economics and strong distribution create lasting value.",
+    title: "Better execution & earlier intervention",
+    description:
+      "Better execution and earlier intervention mean problems get caught — and solved — before they become irreversible.",
   },
 ];
 
@@ -255,7 +258,7 @@ export default function Service() {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-start">
             <div className="lg:col-span-8 flex flex-col">
               <h1 className="text-[3.5rem] sm:text-[5.5rem] lg:text-[7rem] xl:text-[8rem] font-light leading-[0.88] tracking-tight uppercase" style={fontDisplay}>
-                <TextMask delay={100}>WE DON'T JUST</TextMask>
+                <TextMask delay={100}>WE DO NOT SIMPLY</TextMask>
                 <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
                   <TextMask delay={220} className="italic font-normal text-[#DC2D26]">
                     ADVISE.
@@ -274,7 +277,7 @@ export default function Service() {
                     WHAT WE DO
                   </p>
                   <p className="text-base sm:text-lg text-[rgba(33,29,27,0.75)] leading-relaxed font-light">
-                    Dayone Ventures creates, structures, launches and scales new companies alongside founders and institutions.
+                    DAYONE works with selected founders to build ventures from idea to scale through hands-on support, specialist operators, structured execution and access to capital.
                   </p>
                 </div>
               </Reveal>
@@ -286,7 +289,7 @@ export default function Service() {
             <div className="lg:col-span-6 flex flex-col gap-8">
               <Reveal delay={550}>
                 <p className="text-2xl sm:text-3xl lg:text-4xl font-light leading-[1.25] tracking-tight text-[#211D1B]" style={fontDisplay}>
-                  Founders shouldn't have to build alone. The founder brings the insight — Dayone brings the strategy, product, technology, brand and building engine behind it.
+                  Build the startups. Not the support system around it.
                 </p>
               </Reveal>
 
@@ -319,7 +322,7 @@ export default function Service() {
                   </a>
 
                   <p className="text-sm text-[rgba(33,29,27,0.6)] font-normal max-w-xs leading-relaxed">
-                    Different opportunities require different build models. We supply exactly what's needed.
+                    Strategy. Product. Brand. Growth. Operations. Technology. Capital.
                   </p>
                 </div>
               </Reveal>
@@ -385,10 +388,10 @@ export default function Service() {
                   className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-light leading-[0.95] tracking-tight uppercase"
                   style={fontDisplay}
                 >
-                  ONE SHARED
+                  WE STAY CLOSE
                   <br />
                   <span className="italic font-normal text-[#DC2D26]">
-                    CAPABILITY ENGINE.
+                    TO THE VENTURE.
                   </span>
                 </h2>
               </Reveal>
@@ -396,7 +399,7 @@ export default function Service() {
             <div className="lg:col-span-4">
               <Reveal delay={150}>
                 <p className="text-base sm:text-lg text-[rgba(244,240,226,0.7)] leading-relaxed font-light">
-                  Every venture gains access to a complete building team. Dayone's shared capabilities span architecture, product, brand and growth — moving ideas from strategy into execution.
+                  The early years of a startup force founders to become strategists, marketers, recruiters, salespeople, operators and fundraisers at the same time. DAYONE exists to reduce that fragmentation, bringing the support infrastructure around selected founders so they can spend more time building the company that matters.
                 </p>
               </Reveal>
             </div>
@@ -493,6 +496,7 @@ export default function Service() {
                 </div>
               );
             })}
+
           </div>
         </div>
       </section>
@@ -511,16 +515,16 @@ export default function Service() {
                   className="text-4xl sm:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight uppercase"
                   style={fontDisplay}
                 >
-                  ONE DISCIPLINED
+                  FROM IDEA
                   <br />
                   <span className="italic font-normal text-[#DC2D26]">
-                    SYSTEM.
+                    TO SCALE.
                   </span>
                 </h2>
               </Reveal>
               <Reveal delay={150}>
                 <p className="mt-6 text-lg sm:text-xl text-[rgba(33,29,27,0.7)] max-w-2xl leading-relaxed font-light">
-                  Building a business rarely happens in one clean step. Every venture moves through the same disciplined system, from validation to scale.
+                  A DAYONE venture moves through a structured building process — from discovery and validation to go-to-market, growth, scale and capital.
                 </p>
               </Reveal>
             </div>
@@ -615,20 +619,20 @@ export default function Service() {
                   className="text-4xl sm:text-6xl font-light uppercase leading-[0.95] tracking-tight"
                   style={fontDisplay}
                 >
-                  LAUNCH IS ONLY
+                  INCREASE THE STARTUP
                   <br />
                   <span className="italic font-normal text-[#DC2D26]">
-                    THE BEGINNING.
+                    SUCCESS RATIO.
                   </span>
                 </h2>
               </Reveal>
               <Reveal delay={150}>
                 <div className="mt-8 flex flex-col gap-6 text-lg sm:text-xl text-[rgba(33,29,27,0.75)] leading-relaxed font-light">
                   <p>
-                    We build for repeatability, not launch-day attention. Product-market fit shifts. Customers respond. Distribution expands. New opportunities appear.
+                    Startup building will always involve uncertainty. We cannot eliminate failure. But we believe avoidable failure can be reduced — through better validation, better founders, better economics, better operating systems, better execution and earlier intervention.
                   </p>
                   <p>
-                    Dayone stays focused on the next stage — strengthening customer acquisition, unit economics, operational repeatability and investment readiness for sustainable growth.
+                    DAYONE's long-term operating ambition is to build a portfolio where the success ratio moves beyond 25%, and continues improving as our venture-building intelligence compounds. Not as a marketing claim — as a number we intend to measure.
                   </p>
                 </div>
               </Reveal>
@@ -673,15 +677,15 @@ export default function Service() {
               className="text-4xl sm:text-6.5xl lg:text-7.5xl xl:text-8xl font-light leading-[0.9] tracking-tight text-[#F4F0E2] uppercase"
               style={fontDisplay}
             >
-              <TextMask delay={0}>READY TO BUILD</TextMask>
+              <TextMask delay={0}>LOOKING FOR</TextMask>
               <TextMask delay={150} className="italic font-normal">
-                WHAT'S NEXT?
+                VENTURES?
               </TextMask>
             </h2>
 
             <Reveal delay={300}>
               <p className="mt-8 max-w-xl text-lg sm:text-2xl text-[#F4F0E2]/90 leading-relaxed font-light">
-                Building something as a founder? Exploring opportunities as an investor? Let's start the conversation.
+                Discover companies being built inside the DAYONE ecosystem.
               </p>
             </Reveal>
 

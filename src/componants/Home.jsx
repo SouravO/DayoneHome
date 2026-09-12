@@ -3,16 +3,16 @@ import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const COLORS = {
-  cream: "#F5F1E0",
-  creamMuted: "#EBE5D3",
-  red: "#CF2D26",
-  deepRed: "#9A302B",
-  charcoal: "#262119",
-  charcoalMuted: "rgba(38, 33, 25, 0.68)",
-  charcoalFaint: "rgba(38, 33, 25, 0.4)",
-  charcoalGhost: "rgba(38, 33, 25, 0.06)",
-  hairline: "rgba(38, 33, 25, 0.12)",
-  hairlineLight: "rgba(245, 241, 224, 0.12)",
+  cream: "#F4F1DF",
+  creamMuted: "#E8E4D3",
+  red: "#DD3027",
+  deepRed: "#A52621",
+  charcoal: "#221F1F",
+  charcoalMuted: "rgba(34, 31, 31, 0.68)",
+  charcoalFaint: "rgba(34, 31, 31, 0.4)",
+  charcoalGhost: "rgba(34, 31, 31, 0.06)",
+  hairline: "rgba(34, 31, 31, 0.12)",
+  hairlineLight: "rgba(244, 241, 223, 0.12)",
 };
 
 /* ------------------------------------------------------------------ */
@@ -165,39 +165,44 @@ const INDUSTRIES = [
 
 const CAPABILITIES_DATA = [
   {
-    title: "Business Strategy",
-    desc: "Define the right opportunity, business model and path forward before turning an idea into a scalable venture.",
+    title: "Venture Strategy",
+    desc: "Business models, market strategy, pricing and growth direction.",
     img: "/business_strategy.png"
   },
   {
-    title: "Product Development",
-    desc: "Turn promising ideas into focused products through strategy, validation and thoughtful execution.",
+    title: "Product & Brand",
+    desc: "Product thinking, positioning, identity, packaging and customer experience.",
     img: "/product_development.png"
   },
   {
-    title: "Brand Building",
-    desc: "Build distinctive brands that communicate clearly, create trust and give new businesses a strong identity.",
-    img: "/Brand_Building.png"
-  },
-  {
-    title: "Technology",
-    desc: "Design and build the technology foundation needed to turn ambitious ideas into scalable products and systems.",
-    img: "/Technology.png"
-  },
-  {
-    title: "Go-to-Market",
-    desc: "Shape the positioning, launch strategy and growth path needed to bring the right product to the right market.",
+    title: "Growth & Go-To-Market",
+    desc: "Marketing, distribution, sales, digital, retail, partnerships and customer acquisition.",
     img: "/Go-to-Market.png"
   },
   {
+    title: "Finance",
+    desc: "Financial modelling, unit economics, cash-flow discipline and capital planning.",
+    img: "/Finance.png"
+  },
+  {
     title: "Operations",
-    desc: "Build the processes, systems and operational foundation that allow a growing company to move faster and smarter.",
+    desc: "People, systems, KPIs, workflows, hiring and execution.",
     img: "/Operations.png"
   },
   {
-    title: "Fundraising Preparation",
-    desc: "Prepare the story, strategy and materials needed to approach investors with clarity and confidence.",
-    img: "/Fundraising_Preparation.png"
+    title: "Technology",
+    desc: "Platforms, automation, dashboards and venture infrastructure.",
+    img: "/Technology.png"
+  },
+  {
+    title: "Founder Development",
+    desc: "Mentorship, leadership, accountability and peer learning.",
+    img: "/Founder_Development.png"
+  },
+  {
+    title: "Capital",
+    desc: "Investor readiness, strategic introductions and fundraising support when the company is ready.",
+    img: "/Capital.png"
   }
 ];
 
@@ -316,27 +321,34 @@ function Hero({ loaded }) {
       </div>
 
       {/* 4. Cinematic Foreground Typography & Content */}
-      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-6 sm:px-10 lg:px-16 2xl:px-24 pb-8 lg:pb-10 pt-24 lg:pt-28">
-        <div className="max-w-[90vw] lg:max-w-[80vw]">
-          <h1 className="flex flex-col text-[14vw] lg:text-[8vw] font-black uppercase leading-[0.82] tracking-tighter" style={{ color: COLORS.cream }}>
-            <TextReveal delay={100}>Every</TextReveal>
-            <TextReveal delay={250} className="-mt-1 lg:-mt-4">Business</TextReveal>
-            <span className="font-serif italic lowercase tracking-tight mt-2 lg:mt-5 text-[11vw] sm:text-[10vw] lg:text-[7vw] leading-[1] text-[#CF2D26] drop-shadow-2xl flex">
-              <TextReveal delay={400} className="pb-3">has a day one.</TextReveal>
+      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-6 sm:px-10 lg:px-16 2xl:px-24 pb-8 sm:pb-10 lg:pb-10 pt-24 lg:pt-28">
+        <div className="max-w-[92vw] sm:max-w-3xl lg:max-w-[48rem]">
+          <h1 className="flex flex-col text-[clamp(4.25rem,7vw,5.9rem)] font-black uppercase leading-[0.84] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
+            <TextReveal delay={100}>Startups</TextReveal>
+            <TextReveal delay={250} className="-mt-2 lg:-mt-5">are built</TextReveal>
+            <span className="font-serif italic lowercase tracking-[-0.04em] mt-3 lg:mt-5 text-[clamp(3.75rem,5.8vw,4.9rem)] leading-[0.95] text-[#CF2D26] drop-shadow-2xl flex">
+              <TextReveal delay={400} className="pb-3">Here.</TextReveal>
             </span>
           </h1>
-        </div>
 
-        <div className="mt-8 lg:mt-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 lg:gap-10">
-          <FadeReveal delay={600} className="max-w-xl">
-            <p className="text-xl md:text-2xl lg:text-[1.6rem] leading-relaxed font-medium" style={{ color: "rgba(245, 241, 224, 0.85)" }}>
-              Dayone Ventures creates, structures, launches and scales new companies across India, the Middle East and global markets.
-            </p>
-          </FadeReveal>
-          
-          <FadeReveal delay={750} distance="translate-y-6" className="shrink-0">
-            <PremiumButton dark onClick={() => navigate("/services")}>Explore ventures</PremiumButton>
-          </FadeReveal>
+          <div className="mt-8 sm:mt-10 lg:mt-9">
+            <FadeReveal delay={600}>
+              <p className="max-w-[32rem] text-base sm:text-lg lg:text-[1.42rem] leading-[1.55] font-medium" style={{ color: "rgba(245, 241, 224, 0.85)" }}>
+                We partner with founders to build and scale startups across Consumer Goods, Wellness and Lifestyle.
+              </p>
+            </FadeReveal>
+
+            <FadeReveal delay={680} className="mt-6 sm:mt-7">
+              <div className="flex items-center gap-5 text-[0.62rem] sm:text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: "rgba(245, 241, 224, 0.8)" }}>
+                <span className="h-px w-10 bg-[#CF2D26]" />
+                <span>Ideas. People. Products. Scale.</span>
+              </div>
+            </FadeReveal>
+
+            <FadeReveal delay={750} distance="translate-y-6" className="mt-8 sm:mt-10">
+              <PremiumButton dark onClick={() => navigate("/services")}>Explore Ventures</PremiumButton>
+            </FadeReveal>
+          </div>
         </div>
       </div>
       
@@ -357,22 +369,22 @@ function Intro() {
           {/* Massive Typographic Statement */}
           <div className="w-full lg:w-[65%] shrink-0">
             <h2 className="text-[12vw] lg:text-[8vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-              <TextReveal>A venture</TextReveal>
-              <TextReveal delay={150}>studio built</TextReveal>
+              <TextReveal>A founder should</TextReveal>
+              <TextReveal delay={150}>not have to build</TextReveal>
               <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block">
-                <TextReveal delay={300}>for day one.</TextReveal>
+                <TextReveal delay={300}>everything alone.</TextReveal>
               </span>
             </h2>
             
             <div className="mt-16 lg:mt-24 max-w-2xl grid gap-8 border-l-2 pl-6 lg:pl-10" style={{ borderColor: COLORS.red }}>
               <FadeReveal delay={200}>
                 <p className="text-xl md:text-2xl leading-relaxed font-medium" style={{ color: COLORS.charcoalMuted }}>
-                  Dayone Ventures creates, structures, launches and scales new companies, working alongside founders and institutions.
+                  These resources work around the founder and the company at every important stage.
                 </p>
               </FadeReveal>
               <FadeReveal delay={300}>
                 <p className="text-lg md:text-xl leading-relaxed" style={{ color: COLORS.charcoalMuted }}>
-                  We work across business strategy, product development, brand building, technology, go-to-market, operations and fundraising preparation.
+                  One founder. One venture. A much bigger team behind it.
                 </p>
               </FadeReveal>
             </div>
@@ -402,7 +414,6 @@ function Intro() {
 function Ecosystem() {
   const marqueeImages = [
     { src: '/scroll1.png' },
-    { src: '/scroll2.png' },
     { src: '/scroll3.png' },
     { src: '/scroll4.png' },
     { src: '/scroll5.png' },
@@ -431,14 +442,14 @@ function Ecosystem() {
       <div className="px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto relative z-10">
         <div className="max-w-4xl">
           <h2 className="text-[11vw] lg:text-[7vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-            <TextReveal>We build</TextReveal>
+            <TextReveal>Focused by</TextReveal>
             <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block mt-2 lg:mt-4">
-              <TextReveal delay={200}>for everyday life.</TextReveal>
+              <TextReveal delay={200}>design.</TextReveal>
             </span>
           </h2>
           <FadeReveal delay={300} className="mt-12 lg:mt-16">
             <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl font-medium" style={{ color: COLORS.charcoalMuted }}>
-              Dayone focuses on large, repeat-use markets where consumer behaviour, innovation and distribution create significant enterprise value.
+              DAYONE operates within selected domains because venture building becomes stronger when knowledge compounds.
             </p>
           </FadeReveal>
         </div>
@@ -495,18 +506,18 @@ function Capabilities() {
         {/* Section Header */}
         <div className="max-w-4xl">
           <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#CF2D26] block mb-4">
-            DayOne Ventures
+            The Backbone
           </span>
           <h2 className="text-[10vw] lg:text-[6.5vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-            <TextReveal>Built for</TextReveal>
+            <TextReveal>Everything a venture</TextReveal>
             <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block mt-1">
-              <TextReveal delay={150}>day one.</TextReveal>
+              <TextReveal delay={150}>needs to move forward.</TextReveal>
             </span>
           </h2>
           
           <FadeReveal delay={250} className="mt-8 lg:mt-10">
             <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-3xl font-medium" style={{ color: COLORS.charcoalMuted }}>
-              A venture studio that works alongside founders and institutions to create, structure, launch and scale new companies.
+              DAYONE gives selected startups access to a shared venture-building backbone made up of experienced operators, specialist teams, mentors, technology, performance systems and investor networks.
             </p>
           </FadeReveal>
         </div>
@@ -618,7 +629,7 @@ function Capabilities() {
 
               <FadeReveal delay={350} className="mt-10 pt-8 border-l-2 pl-6 lg:pl-8" style={{ borderColor: COLORS.red }}>
                 <p className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight leading-snug" style={{ color: COLORS.charcoal }}>
-                  We are not consultants advising from the outside. <span className="text-[#CF2D26] italic font-serif lowercase leading-[1] block mt-1">We become part of the building process.</span>
+                  We do not stand outside the company and advise. <span className="text-[#CF2D26] italic font-serif lowercase leading-[1] block mt-1">We build from inside.</span>
                 </p>
               </FadeReveal>
             </FadeReveal>
@@ -649,16 +660,16 @@ function ClosingCTA() {
       <div className="relative z-10 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto w-full text-center flex flex-col items-center">
         
         <h2 className="text-[14vw] lg:text-[11vw] font-black uppercase leading-[0.8] tracking-tighter" style={{ color: COLORS.cream }}>
-          <TextReveal>Great</TextReveal>
-          <TextReveal delay={100}>Companies</TextReveal>
+          <TextReveal>Startups</TextReveal>
+          <TextReveal delay={100}>are built.</TextReveal>
           <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#9A302B] mix-blend-multiply block mt-2 lg:mt-4">
-            <TextReveal delay={200}>have a day one.</TextReveal>
+            <TextReveal delay={200}>from day one.</TextReveal>
           </span>
         </h2>
 
         <FadeReveal delay={300} className="mt-12 lg:mt-20 max-w-2xl mx-auto">
           <p className="text-xl md:text-2xl lg:text-[1.7rem] leading-snug font-medium" style={{ color: "rgba(245, 241, 224, 0.9)" }}>
-            The first idea. The first prototype. The first customer. The first impossible ambition.
+            Have something worth building? If you are building in Consumer Goods, Wellness or Lifestyle, start the conversation.
           </p>
         </FadeReveal>
 
@@ -669,7 +680,7 @@ function ClosingCTA() {
           >
             <div className="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#262119] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100" />
             <span className="relative z-10 flex items-center gap-4 group-hover:text-[#F5F1E0] transition-colors duration-500">
-              Start a conversation
+              Build With DAYONE
               <ArrowRight size={18} className="transition-transform duration-500 group-hover:translate-x-2" />
             </span>
           </button>
