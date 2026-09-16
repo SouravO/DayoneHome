@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import About from './componants/About'
 import Contact from './componants/Contact'
+import Career from './componants/Careers'
 import Footer from './componants/Footer'
 import Home from './componants/Home'
 import { Intro } from './componants/Intro'
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Service />} />
+          <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />

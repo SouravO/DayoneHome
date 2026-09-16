@@ -13,9 +13,11 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --editorial: 'Bodoni 72', Didot, 'Iowan Old Style', Georgia, serif;
+  --sans: 'Helvetica Now Display', 'Helvetica Neue', 'Arial Nova', Arial, sans-serif;
+  --heading: 'Helvetica Now Display', 'Helvetica Neue', 'Arial Nova', Arial, sans-serif;
+  --display: 'Helvetica Now Display', 'Helvetica Neue', 'Arial Nova', Arial, sans-serif;
+  --editorial: 'Nineties', 'Nineties Display', 'Iowan Old Style', Georgia, serif;
+  --editorial-italic: 'Nineties', 'Nineties Display', 'Iowan Old Style', Georgia, serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -55,12 +57,17 @@ textarea {
 
 em,
 i,
-.font-serif {
-  font-family: var(--editorial);
+.font-serif,
+.italic {
+  font-family: var(--editorial-italic) !important;
+  font-style: italic;
+  font-weight: 400 !important;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "clig" 0, "calt" 0;
 }
 
-.italic {
-  font-family: var(--editorial) !important;
+.font-display {
+  font-family: var(--display);
 }
 
 html {

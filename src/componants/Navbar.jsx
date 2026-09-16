@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
-import DayOneLogo from "./DayOneLogo" // Adjust import path as needed
 
 // Brand palette: paper cream, DayOne red, and ink black.
 
@@ -8,6 +7,7 @@ const NAV_LINKS = [
     { label: "Home", to: "/" },
     { label: "About", to: "/about" },
     { label: "Services", to: "/services" },
+    { label: "Careers", to: "/career" },
     { label: "Contact", to: "/contact" },
 ]
 
@@ -50,7 +50,11 @@ function Navbar() {
                     onClick={() => setOpen(false)}
                     className="flex-shrink-0 transition-opacity duration-300 hover:opacity-80"
                 >
-                    <DayOneLogo variant="navbar" />
+                    <img
+                        src="/logo.png"
+                        alt="DayOne logo"
+                        className="h-12 w-auto object-contain sm:h-14"
+                    />
                 </NavLink>
 
                 {/* Desktop links */}

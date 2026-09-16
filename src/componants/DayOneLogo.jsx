@@ -18,15 +18,16 @@ export default function DayOneLogo({ className = "", variant = "navbar" }) {
                     <style>
                         {`
                             .do-wordmark {
-                                font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                                font-family: var(--display);
                                 font-weight: 900;
                                 font-size: 80px;
                                 letter-spacing: -0.075em;
                                 fill: ${brandRed};
                             }
                             .do-tagline {
-                                font-family: 'Bodoni 72', Didot, 'Iowan Old Style', Georgia, serif;
+                                font-family: var(--editorial-italic);
                                 font-style: italic;
+                                font-weight: 400;
                                 font-size: 17px;
                                 letter-spacing: -0.02em;
                                 fill: ${brandRed};

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /* ------------------------------------------------------------------ */
 /* Brand tokens — sampled from the DayOne wordmark                    */
@@ -14,11 +15,10 @@ const c = {
 };
 
 const fontDisplay = {
-  fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif",
+  fontFamily: "var(--display)",
 };
 const fontBody = {
-  fontFamily:
-    "'Helvetica Neue', Helvetica, Arial, sans-serif",
+  fontFamily: "var(--sans)",
 };
 
 /* ------------------------------------------------------------------ */
@@ -129,6 +129,7 @@ function About() {
   const [activeJourney, setActiveJourney] = useState(0);
   const [activeStageIndex, setActiveStageIndex] = useState(0);
   const scrollContainerRef = useRef(null);
+  const navigate = useNavigate();
 
   const scrollStage = (direction) => {
     if (!scrollContainerRef.current) return;
@@ -503,6 +504,7 @@ function About() {
               <div className="mt-16 flex flex-col sm:flex-row gap-6 items-center">
                 <button
                   type="button"
+                  onClick={() => navigate("/contact")}
                   className="group relative overflow-hidden px-10 py-5 text-xs font-semibold uppercase tracking-[0.2em] bg-[#F4F0E2] text-[#211D1B] transition-all duration-500 shadow-xl hover:shadow-2xl"
                 >
                   <span className="relative z-10 block transition-transform duration-500 group-hover:-translate-y-12">
@@ -515,6 +517,7 @@ function About() {
 
                 <button
                   type="button"
+                  onClick={() => navigate("/services")}
                   className="group relative overflow-hidden px-10 py-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#F4F0E2] border border-[#F4F0E2]/40 hover:border-[#F4F0E2] transition-colors duration-300"
                 >
                   <span className="relative z-10 block transition-transform duration-500 group-hover:-translate-y-12">

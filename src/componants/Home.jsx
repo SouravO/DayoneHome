@@ -1,24 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import HowWeBuild from "./HowWeBuild";
 
 const COLORS = {
   cream: "#F4F1DF",
-  creamMuted: "#E8E4D3",
   red: "#DD3027",
-  deepRed: "#A52621",
   charcoal: "#221F1F",
   charcoalMuted: "rgba(34, 31, 31, 0.68)",
-  charcoalFaint: "rgba(34, 31, 31, 0.4)",
-  charcoalGhost: "rgba(34, 31, 31, 0.06)",
   hairline: "rgba(34, 31, 31, 0.12)",
-  hairlineLight: "rgba(244, 241, 223, 0.12)",
 };
 
-/* ------------------------------------------------------------------ */
-/* Hooks & Utils                                                      */
-/* ------------------------------------------------------------------ */
-
+/* Hooks */
 function useReveal(threshold = 0.1) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -49,18 +42,15 @@ function useParallax(speed = 0.05) {
   useEffect(() => {
     if (window.innerWidth < 768) return;
     let rafId;
-
     const handleScroll = () => {
       if (!ref.current) return;
       const rect = ref.current.getBoundingClientRect();
       const viewHeight = window.innerHeight;
-      
       if (rect.top < viewHeight && rect.bottom > 0) {
         const centerOffset = (rect.top + rect.height / 2) - viewHeight / 2;
         rafId = requestAnimationFrame(() => setOffset(centerOffset * speed));
       }
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => {
@@ -72,15 +62,11 @@ function useParallax(speed = 0.05) {
   return [ref, offset];
 }
 
-/* ------------------------------------------------------------------ */
-/* Components                                                         */
-/* ------------------------------------------------------------------ */
-
-function TextReveal({ children, delay = 0, className = "" }) {
+/* Reveal + button primitives */
+function TextReveal({ children, delay = 0, className = "", clip = true }) {
   const [ref, visible] = useReveal();
-  
   return (
-    <div ref={ref} className={`overflow-hidden py-2 ${className}`}>
+    <div ref={ref} className={`${clip ? "overflow-hidden" : "overflow-visible"} py-2 ${className}`}>
       <div
         className="transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
         style={{
@@ -96,7 +82,6 @@ function TextReveal({ children, delay = 0, className = "" }) {
 
 function FadeReveal({ children, delay = 0, className = "", distance = "translate-y-8" }) {
   const [ref, visible] = useReveal();
-  
   return (
     <div
       ref={ref}
@@ -115,7 +100,6 @@ function FadeReveal({ children, delay = 0, className = "", distance = "translate
 function PremiumButton({ children, dark = false, className = "", ...props }) {
   const borderCol = dark ? "border-white/20" : "border-[#262119]/20";
   const textCol = dark ? "text-[#F5F1E0]" : "text-[#262119]";
-  
   return (
     <button
       type="button"
@@ -131,282 +115,133 @@ function PremiumButton({ children, dark = false, className = "", ...props }) {
   );
 }
 
-function LineDivider({ delay = 0, dark = false }) {
-  const [ref, visible] = useReveal();
-  const color = dark ? COLORS.hairlineLight : COLORS.hairline;
-  return (
-    <div ref={ref} className="w-full overflow-hidden h-px">
-      <div 
-        className="w-full h-full transition-transform duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] origin-left"
-        style={{ 
-          backgroundColor: color, 
-          transform: visible ? "scaleX(1)" : "scaleX(0)",
-          transitionDelay: `${delay}ms`
-        }} 
-      />
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Data                                                               */
-/* ------------------------------------------------------------------ */
-
-const INDUSTRIES = [
-  { name: "Marketing", desc: "Building brands, communication and growth businesses." },
-  { name: "Energy", desc: "Exploring opportunities across energy and petroleum businesses." },
-  { name: "Technology", desc: "Creating technology-led products and business models." },
-  { name: "Consumer", desc: "Building businesses around changing customer behavior and demand." },
-  { name: "Hospitality", desc: "Developing experience-led businesses and hospitality concepts." },
-  { name: "Property", desc: "Exploring opportunities across property and real-estate services." },
-  { name: "Business Services", desc: "Creating practical businesses around operational needs." },
-  { name: "Emerging Ventures", desc: "Exploring new opportunities where the next business can begin." },
-];
+/* Data */
+const FALLBACK_CAPABILITY_IMAGE = "/Home.png";
 
 const CAPABILITIES_DATA = [
-  {
-    title: "Venture Strategy",
-    desc: "Business models, market strategy, pricing and growth direction.",
-    img: "/business_strategy.png"
-  },
-  {
-    title: "Product & Brand",
-    desc: "Product thinking, positioning, identity, packaging and customer experience.",
-    img: "/product_development.png"
-  },
-  {
-    title: "Growth & Go-To-Market",
-    desc: "Marketing, distribution, sales, digital, retail, partnerships and customer acquisition.",
-    img: "/Go-to-Market.png"
-  },
-  {
-    title: "Finance",
-    desc: "Financial modelling, unit economics, cash-flow discipline and capital planning.",
-    img: "/Finance.png"
-  },
-  {
-    title: "Operations",
-    desc: "People, systems, KPIs, workflows, hiring and execution.",
-    img: "/Operations.png"
-  },
-  {
-    title: "Technology",
-    desc: "Platforms, automation, dashboards and venture infrastructure.",
-    img: "/Technology.png"
-  },
-  {
-    title: "Founder Development",
-    desc: "Mentorship, leadership, accountability and peer learning.",
-    img: "/Founder_Development.png"
-  },
-  {
-    title: "Capital",
-    desc: "Investor readiness, strategic introductions and fundraising support when the company is ready.",
-    img: "/Capital.png"
-  }
+  { title: "Venture Strategy", desc: "Business models, market strategy, pricing and growth direction.", img: "/business_strategy.png" },
+  { title: "Product & Brand", desc: "Product thinking, positioning, identity, packaging and customer experience.", img: "/product_development.png" },
+  { title: "Growth & Go-To-Market", desc: "Marketing, distribution, sales, digital, retail, partnerships and customer acquisition.", img: "/Go-to-Market.png" },
+  { title: "Finance", desc: "Financial modelling, unit economics, cash-flow discipline and capital planning.", img: "/Service.png" },
+  { title: "Operations", desc: "People, systems, KPIs, workflows, hiring and execution.", img: "/Operations.png" },
+  { title: "Technology", desc: "Platforms, automation, dashboards and venture infrastructure.", img: "/Technology.png" },
+  { title: "Founder Development", desc: "Mentorship, leadership, accountability and peer learning.", img: "/Home.png" },
+  { title: "Capital", desc: "Investor readiness, strategic introductions and fundraising support when the company is ready.", img: "/Brand_Building.png" },
 ];
 
-const _PHILOSOPHY_STATES = [
-  {
-    title: "The best ideas",
-    desc: "We're ruthless about only committing resources and capital to the most promising ideas.",
-    bg: "#E3B651",
-    textCol: "text-white",
-    icon: (
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="60" cy="60" r="6" fill="white"/>
-        <path d="M60 20L60 35M60 85L60 100M20 60L35 60M85 60L100 60M31.7157 31.7157L42.3223 42.3223M77.6777 77.6777L88.2843 88.2843M31.7157 88.2843L42.3223 77.6777M77.6777 42.3223L88.2843 31.7157M45 23L50 36M75 97L70 84M23 75L36 70M97 45L84 50M23 45L36 50M97 75L84 70M45 97L50 84M75 23L70 36" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
-      </svg>
-    )
-  },
-  {
-    title: "Focus on building",
-    desc: "Spend your time building while our team of experts does the rest.",
-    bg: "#181512",
-    textCol: "text-white",
-    icon: (
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="42" cy="60" r="18" fill="white"/>
-        <circle cx="78" cy="60" r="18" fill="white"/>
-        <circle cx="60" cy="42" r="18" fill="white"/>
-        <circle cx="60" cy="78" r="18" fill="white"/>
-        <rect x="36" y="54" width="12" height="12" fill="#181512"/>
-        <path d="M78 54L84 60L78 66L72 60L78 54Z" fill="#181512"/>
-        <path d="M60 34C60 34 63 42 66 42C63 42 60 50 60 50C60 50 57 42 54 42C57 42 60 34 60 34Z" fill="#181512"/>
-        <path d="M60 70C60 70 63 78 66 78C63 78 60 86 60 86C60 86 57 78 54 78C57 78 60 70 60 70Z" fill="#181512"/>
-      </svg>
-    )
-  },
-  {
-    title: "Unfair advantage",
-    desc: "Go to market faster with the best ideas, playbooks, team, and flexible funding structure.",
-    bg: "#3B6946",
-    textCol: "text-white",
-    icon: (
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 30H50V50H30V30Z" fill="white"/>
-        <path d="M55 30H75V50H55V30Z" fill="white"/>
-        <path d="M80 30H100V50H80V30Z" fill="white"/>
-        <path d="M30 55H50V75H30V55Z" fill="white"/>
-        <path d="M55 55H75V75H55V55Z" fill="white"/>
-        <path d="M80 55L100 75H80V55Z" fill="white"/>
-        <path d="M30 80H50V100H30V80Z" fill="white"/>
-        <path d="M55 80L75 100H55V80Z" fill="white"/>
-        <path d="M30 30L50 50H30V30Z" fill="#3B6946"/>
-        <path d="M55 30L75 50H55V30Z" fill="#3B6946"/>
-        <path d="M30 55L50 75H30V55Z" fill="#3B6946"/>
-        <path d="M30 80L50 100H30V80Z" fill="#3B6946"/>
-        <path d="M55 55L75 75H55V55Z" fill="#3B6946"/>
-      </svg>
-    )
-  },
-  {
-    title: "Outsized impact",
-    desc: "Our goal is to build the largest and fastest growing companies, giving our co-founders more opportunity for upside.",
-    bg: "#E09C83",
-    textCol: "text-white",
-    icon: (
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M60 40C60 40 64 52 70 52C64 52 60 64 60 64C60 64 56 52 50 52C56 52 60 40 60 40Z" fill="white"/>
-        <path d="M36 60C36 60 48 88 60 88C60 88 60 70 60 60C60 60 46 54 36 60Z" fill="white"/>
-        <path d="M84 60C84 60 72 88 60 88C60 88 60 70 60 60C60 60 74 54 84 60Z" fill="white"/>
-      </svg>
-    )
-  }
-];
-
-/* ------------------------------------------------------------------ */
-/* Sections                                                           */
-/* ------------------------------------------------------------------ */
-
+/* Sections */
 function Hero({ loaded }) {
   const [imgRef, imgOffset] = useParallax(0.15);
   const navigate = useNavigate();
 
   return (
     <section className="relative h-[100svh] min-h-0 w-full flex flex-col justify-end overflow-hidden bg-[#262119]">
-      
-      {/* 1. Cinematic Full-Screen Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           ref={imgRef}
           src="/Hero.png"
           alt="DayOne Studio Office"
-          className="w-full h-[120%] object-cover object-center transition-all duration-[2500ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]"
-          style={{ 
-            transform: `translateY(${imgOffset}px) scale(${loaded ? 1 : 1.1})`,
+          className="hero-background-image w-[170%] sm:w-full h-[120%] object-cover object-center transition-all duration-[2500ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]"
+          style={{
+            transform: `translateY(${imgOffset}px) scale(${loaded ? 0.98 : 1.08})`,
             opacity: loaded ? 1 : 0.4,
-            filter: "contrast(1.05) brightness(0.95)"
+            filter: "contrast(1.05) brightness(0.95)",
+            objectPosition: "76% center",
           }}
         />
-        
-        {/* 2. Controlled Dark Overlays for Perfect Contrast & Readability */}
-        <div 
+        <style>{`
+          @media (min-width: 1024px) {
+            .hero-background-image { object-position: 88% center !important; }
+          }
+        `}</style>
+
+        <div
           className="absolute inset-0 bg-gradient-to-t from-[#262119] via-[#262119]/70 to-transparent transition-opacity duration-[2000ms] ease-out pointer-events-none"
           style={{ opacity: loaded ? 0.95 : 0 }}
         />
-        <div 
-          className="absolute inset-0 bg-gradient-to-r from-[#262119]/95 via-[#262119]/50 to-transparent w-full lg:w-3/4 transition-opacity duration-[2500ms] ease-out pointer-events-none"
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[#262119]/90 via-[#262119]/65 to-[#262119]/10 w-full lg:w-3/4 transition-opacity duration-[2500ms] ease-out pointer-events-none"
           style={{ opacity: loaded ? 1 : 0 }}
         />
-
-        {/* 3. WOW Detail: Subtle ambient red glow behind the red serif text */}
-        <div 
+        <div
           className="absolute -bottom-20 -left-20 w-[60vw] h-[60vh] bg-[#CF2D26]/25 blur-[160px] rounded-full mix-blend-screen pointer-events-none transition-all duration-[3000ms] ease-out"
-          style={{ 
+          style={{
             opacity: loaded ? 0.7 : 0,
-            transform: `translate(${loaded ? '0%' : '-5%'}, ${loaded ? '0%' : '5%'}) scale(${loaded ? 1 : 0.9})`
+            transform: `translate(${loaded ? '0%' : '-5%'}, ${loaded ? '0%' : '5%'}) scale(${loaded ? 1 : 0.9})`,
           }}
         />
       </div>
 
-      {/* 4. Cinematic Foreground Typography & Content */}
-      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-6 sm:px-10 lg:px-16 2xl:px-24 pb-8 sm:pb-10 lg:pb-10 pt-24 lg:pt-28">
-        <div className="max-w-[92vw] sm:max-w-3xl lg:max-w-[48rem]">
-          <h1 className="flex flex-col text-[clamp(4.25rem,7vw,5.9rem)] font-black uppercase leading-[0.84] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
-            <TextReveal delay={100}>Startups</TextReveal>
-            <TextReveal delay={250} className="-mt-2 lg:-mt-5">are built</TextReveal>
-            <span className="font-serif italic lowercase tracking-[-0.04em] mt-3 lg:mt-5 text-[clamp(3.75rem,5.8vw,4.9rem)] leading-[0.95] text-[#CF2D26] drop-shadow-2xl flex">
-              <TextReveal delay={400} className="pb-3">Here.</TextReveal>
+      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-4 sm:px-10 lg:px-16 2xl:px-24 pb-8 sm:pb-10 lg:pb-10 pt-18 sm:pt-24 lg:pt-28">
+        <div className="max-w-[72vw] sm:max-w-[32rem] lg:max-w-[48rem]">
+          <h1 className="flex flex-col text-[clamp(5rem,12vw,6rem)] font-black uppercase leading-[0.72] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
+            <TextReveal delay={100} className="leading-none">Every idea</TextReveal>
+            <TextReveal delay={250} className="-mt-1 lg:-mt-3 leading-none">has a start.</TextReveal>
+            <span className="font-serif italic font-normal capitalize tracking-[-0.04em] mt-1 lg:mt-2 text-[clamp(2.2rem,6vw,4.5rem)] leading-[0.8] text-[#CF2D26] drop-shadow-2xl flex">
+              <TextReveal delay={400} className="pb-1">We turn opportunities<br />into businesses.</TextReveal>
             </span>
           </h1>
 
-          <div className="mt-8 sm:mt-10 lg:mt-9">
+          <div className="mt-6 sm:mt-10 lg:mt-9">
             <FadeReveal delay={600}>
               <p className="max-w-[32rem] text-base sm:text-lg lg:text-[1.42rem] leading-[1.55] font-medium" style={{ color: "rgba(245, 241, 224, 0.85)" }}>
-                We partner with founders to build and scale startups across Consumer Goods, Wellness and Lifestyle.
+                Day One Ventures builds, launches and scales new companies across India, the Middle East and global markets.
               </p>
             </FadeReveal>
 
-            <FadeReveal delay={680} className="mt-6 sm:mt-7">
-              <div className="flex items-center gap-5 text-[0.62rem] sm:text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: "rgba(245, 241, 224, 0.8)" }}>
-                <span className="h-px w-10 bg-[#CF2D26]" />
-                <span>Ideas. People. Products. Scale.</span>
-              </div>
-            </FadeReveal>
-
             <FadeReveal delay={750} distance="translate-y-6" className="mt-8 sm:mt-10">
-              <PremiumButton dark onClick={() => navigate("/services")}>Explore Ventures</PremiumButton>
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+                <PremiumButton dark onClick={() => navigate("/services")}>Explore Ventures</PremiumButton>
+                <PremiumButton dark onClick={() => navigate("/career")}>Careers</PremiumButton>
+              </div>
             </FadeReveal>
           </div>
         </div>
       </div>
-      
-      {/* 5. Smooth structural transition into the next section */}
+
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#F5F1E0]/20 to-transparent z-10" />
     </section>
   );
 }
 
 function Intro() {
-  const [imgRef, imgOffset] = useParallax(0.08);
-
   return (
-    <section className="relative w-full pb-16 overflow-hidden" style={{ backgroundColor: COLORS.creamMuted }}>
-      <div className="pt-12 lg:pt-20 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 justify-between items-start">
-          
-          {/* Massive Typographic Statement */}
-          <div className="w-full lg:w-[65%] shrink-0">
-            <h2 className="text-[12vw] lg:text-[8vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-              <TextReveal>A founder should</TextReveal>
-              <TextReveal delay={150}>not have to build</TextReveal>
+    <section
+      className="intro-background relative h-[calc(100svh-5rem)] min-h-0 w-full overflow-hidden bg-center bg-no-repeat"
+    >
+      <style>{`
+        .intro-background {
+          background-image: url('/framebg.png');
+          background-size: 100% 100%;
+        }
+        @media (max-width: 639px) {
+          .intro-background {
+            background-image: url('/framebgmobile.png');
+          }
+        }
+      `}</style>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent sm:bg-gradient-to-r" />
+      <div className="relative z-10 flex h-full items-start px-5 pt-8 sm:items-center sm:px-10 sm:py-8 lg:px-16 lg:py-10 2xl:px-24">
+        <div className="w-full max-w-[100rem] mx-auto">
+          <div className="w-full max-w-3xl">
+            <h2 className="text-[clamp(2.2rem,6.8vw,5.8rem)] font-black uppercase leading-none tracking-tighter sm:text-[clamp(2.3rem,6.2vw,5.8rem)]" style={{ color: COLORS.cream }}>
+              <TextReveal className="py-0 leading-none">Opportunities</TextReveal>
+              <TextReveal delay={150} className="py-0 leading-none">become businesses.</TextReveal>
               <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block">
-                <TextReveal delay={300}>everything alone.</TextReveal>
+                <TextReveal delay={300} className="py-0 leading-none">We build what's next.</TextReveal>
               </span>
             </h2>
-            
-            <div className="mt-16 lg:mt-24 max-w-2xl grid gap-8 border-l-2 pl-6 lg:pl-10" style={{ borderColor: COLORS.red }}>
+
+            <div className="mt-5 max-w-xl grid gap-3 border-l-2 pl-4 sm:mt-[clamp(1.5rem,5vh,4rem)] sm:gap-[clamp(0.75rem,2vh,1.5rem)] sm:pl-6 lg:pl-8" style={{ borderColor: COLORS.red }}>
               <FadeReveal delay={200}>
-                <p className="text-xl md:text-2xl leading-relaxed font-medium" style={{ color: COLORS.charcoalMuted }}>
-                  These resources work around the founder and the company at every important stage.
-                </p>
-              </FadeReveal>
-              <FadeReveal delay={300}>
-                <p className="text-lg md:text-xl leading-relaxed" style={{ color: COLORS.charcoalMuted }}>
-                  One founder. One venture. A much bigger team behind it.
+                <p className="text-[clamp(0.9rem,1.65vw,1.35rem)] leading-[1.35] font-medium sm:text-[clamp(0.9rem,1.45vw,1.35rem)]" style={{ color: "rgba(244, 241, 223, 0.9)" }}>
+                  Day One Ventures works with founders and institutions to create, launch and scale companies across markets.
                 </p>
               </FadeReveal>
             </div>
           </div>
-
-          {/* Asymmetric Image Presentation */}
-          <div className="w-full lg:w-[35%] lg:mt-32">
-            <FadeReveal distance="translate-y-16">
-              <div className="relative w-full aspect-[3/4] overflow-hidden group">
-                <img 
-                  ref={imgRef}
-                  src="/Home.png" 
-                  alt="DayOne Studio Execution" 
-                  className="w-full h-[120%] object-cover object-center transition-transform duration-[1500ms] ease-out group-hover:scale-105"
-                  style={{ transform: `translateY(${imgOffset}px)` }}
-                />
-              </div>
-            </FadeReveal>
-          </div>
         </div>
       </div>
-     
     </section>
   );
 }
@@ -438,58 +273,42 @@ function Ecosystem() {
           }
         `}
       </style>
-      
+
       <div className="px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto relative z-10">
         <div className="max-w-4xl">
           <h2 className="text-[11vw] lg:text-[7vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
-            <TextReveal>Focused by</TextReveal>
+            <TextReveal>We build</TextReveal>
             <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block mt-2 lg:mt-4">
-              <TextReveal delay={200}>design.</TextReveal>
+              <TextReveal delay={200} clip={false}>for what's next.</TextReveal>
             </span>
           </h2>
           <FadeReveal delay={300} className="mt-12 lg:mt-16">
             <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl font-medium" style={{ color: COLORS.charcoalMuted }}>
-              DAYONE operates within selected domains because venture building becomes stronger when knowledge compounds.
+              Day One focuses on emerging opportunities where consumer needs, innovation and execution come together to create new businesses.
             </p>
           </FadeReveal>
         </div>
       </div>
 
-      {/* High-End Continuous Image Marquee */}
       <div className="mt-8 lg:mt-12 w-full marquee-container">
         <div className="animate-infinite-scroll">
-          {/* First Loop Content */}
-          <div className="flex gap-4 sm:gap-6 lg:gap-10 pr-4 sm:pr-6 lg:pr-10 items-center">
-            {marqueeImages.map((item, i) => (
-              <div 
-                key={`set1-${i}`} 
-                className="relative shrink-0 w-[70vw] sm:w-[45vw] lg:w-[28vw] aspect-[4/3] overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer"
-              >
-                <img 
-                  src={item.src} 
-                  alt="DayOne Ecosystem" 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/image:scale-[1.07]"
-                />
-                <div className="absolute inset-0 bg-[#262119]/0 transition-colors duration-700 ease-out group-hover/image:bg-[#262119]/10" />
-              </div>
-            ))}
-          </div>
-          {/* Second Loop for seamless infinite transition */}
-          <div className="flex gap-4 sm:gap-6 lg:gap-10 pr-4 sm:pr-6 lg:pr-10 items-center">
-            {marqueeImages.map((item, i) => (
-              <div 
-                key={`set2-${i}`} 
-                className="relative shrink-0 w-[70vw] sm:w-[45vw] lg:w-[28vw] aspect-[4/3] overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer"
-              >
-                <img 
-                  src={item.src} 
-                  alt="DayOne Ecosystem" 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/image:scale-[1.07]"
-                />
-                <div className="absolute inset-0 bg-[#262119]/0 transition-colors duration-700 ease-out group-hover/image:bg-[#262119]/10" />
-              </div>
-            ))}
-          </div>
+          {[0, 1].map((loop) => (
+            <div key={loop} className="flex gap-4 sm:gap-6 lg:gap-10 pr-4 sm:pr-6 lg:pr-10 items-center">
+              {marqueeImages.map((item, i) => (
+                <div
+                  key={`set${loop}-${i}`}
+                  className="relative shrink-0 w-[70vw] sm:w-[45vw] lg:w-[28vw] aspect-[4/3] overflow-hidden rounded-2xl md:rounded-[2rem] group/image cursor-pointer"
+                >
+                  <img
+                    src={item.src}
+                    alt="DayOne Ecosystem"
+                    className="w-full h-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/image:scale-[1.07]"
+                  />
+                  <div className="absolute inset-0 bg-[#262119]/0 transition-colors duration-700 ease-out group-hover/image:bg-[#262119]/10" />
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -502,19 +321,15 @@ function Capabilities() {
   return (
     <section className="relative w-full py-20 lg:py-32 overflow-hidden border-t" style={{ backgroundColor: COLORS.cream, borderColor: COLORS.hairline }}>
       <div className="px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto">
-        
-        {/* Section Header */}
         <div className="max-w-4xl">
-          <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#CF2D26] block mb-4">
-            The Backbone
-          </span>
+          <span className="text-xs uppercase font-bold tracking-[0.2em] text-[#CF2D26] block mb-4">The Backbone</span>
           <h2 className="text-[10vw] lg:text-[6.5vw] font-black uppercase leading-[0.85] tracking-tighter" style={{ color: COLORS.charcoal }}>
             <TextReveal>Everything a venture</TextReveal>
             <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block mt-1">
               <TextReveal delay={150}>needs to move forward.</TextReveal>
             </span>
           </h2>
-          
+
           <FadeReveal delay={250} className="mt-8 lg:mt-10">
             <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-3xl font-medium" style={{ color: COLORS.charcoalMuted }}>
               DAYONE gives selected startups access to a shared venture-building backbone made up of experienced operators, specialist teams, mentors, technology, performance systems and investor networks.
@@ -522,14 +337,10 @@ function Capabilities() {
           </FadeReveal>
         </div>
 
-        {/* Editorial Layout: Interactive Capabilities List + Parallax Visual Card */}
         <div className="mt-16 lg:mt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          
-          {/* Main Column: Interactive Editorial List */}
           <div className="lg:col-span-7 flex flex-col border-t" style={{ borderColor: COLORS.hairline }}>
             {CAPABILITIES_DATA.map((cap, i) => {
               const isActive = activeIndex === i;
-              
               return (
                 <div
                   key={cap.title}
@@ -538,32 +349,27 @@ function Capabilities() {
                     isActive ? "border-[#CF2D26]" : "border-[#262119]/10"
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-6 sm:gap-10">
-                      {/* Editorial Index */}
-                      <span 
-                        className={`text-xs md:text-sm font-mono font-bold tracking-widest transition-all duration-500 transform ${
+                  <div className="flex w-full items-start justify-between gap-4 sm:gap-6">
+                    <div className="flex min-w-0 flex-1 items-center gap-6 sm:gap-10">
+                      <span
+                        className={`shrink-0 text-xs md:text-sm font-mono font-bold tracking-widest transition-all duration-500 transform ${
                           isActive ? "text-[#CF2D26] -translate-y-1" : "text-[#262119]/40"
                         }`}
                       >
                         0{i + 1}
                       </span>
-                      
-                      {/* Capability Title */}
-                      <h3 
-                        className={`text-2xl sm:text-3xl lg:text-[2.5rem] font-extrabold uppercase tracking-tight transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      <h3
+                        className={`min-w-0 flex-1 text-2xl sm:text-3xl lg:text-[2.5rem] font-extrabold uppercase tracking-tight transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                           isActive ? "text-[#CF2D26] translate-x-4 lg:translate-x-6" : "text-[#262119]"
                         }`}
                       >
                         {cap.title}
                       </h3>
                     </div>
-
-                    {/* Interactive Arrow Indicator */}
-                    <div 
-                      className={`hidden sm:flex w-10 h-10 rounded-full border items-center justify-center transition-all duration-500 ${
-                        isActive 
-                          ? "border-[#CF2D26] bg-[#CF2D26] text-white opacity-100 translate-x-0" 
+                    <div
+                      className={`hidden shrink-0 sm:flex w-10 h-10 rounded-full border items-center justify-center transition-all duration-500 ${
+                        isActive
+                          ? "border-[#CF2D26] bg-[#CF2D26] text-white opacity-100 translate-x-0"
                           : "border-transparent text-transparent opacity-0 -translate-x-4"
                       }`}
                     >
@@ -571,17 +377,13 @@ function Capabilities() {
                     </div>
                   </div>
 
-                  {/* Expandable Description Area (Fluid CSS Grid Height Transition) */}
-                  <div 
+                  <div
                     className={`grid transition-[grid-template-rows,opacity] duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       isActive ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
                     <div className="overflow-hidden">
-                      <p 
-                        className="pt-4 pb-2 pl-12 sm:pl-[4.5rem] lg:pl-[5.5rem] text-lg lg:text-xl font-medium leading-relaxed max-w-xl" 
-                        style={{ color: COLORS.charcoalMuted }}
-                      >
+                      <p className="pt-4 pb-2 pl-12 sm:pl-[4.5rem] lg:pl-[5.5rem] text-lg lg:text-xl font-medium leading-relaxed max-w-xl" style={{ color: COLORS.charcoalMuted }}>
                         {cap.desc}
                       </p>
                     </div>
@@ -589,35 +391,31 @@ function Capabilities() {
                 </div>
               );
             })}
-
           </div>
 
-          {/* Right Column: Sticky Contextual Image Reveal */}
           <div className="hidden lg:block lg:col-span-5 sticky top-20">
             <FadeReveal distance="translate-y-12">
               <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl bg-[#262119]">
-                
-                {/* Image Stack */}
                 {CAPABILITIES_DATA.map((cap, i) => (
                   <img
                     key={`img-${cap.title}`}
-                    src={cap.img}
+                    src={cap.img || FALLBACK_CAPABILITY_IMAGE}
                     alt={cap.title}
+                    onError={(event) => {
+                      event.currentTarget.onerror = null;
+                      event.currentTarget.src = FALLBACK_CAPABILITY_IMAGE;
+                    }}
                     className={`absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       activeIndex === i ? "opacity-100 scale-100" : "opacity-0 scale-110 pointer-events-none"
                     }`}
                   />
                 ))}
-
-                {/* Gradient Overlay for Readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#262119] via-[#262119]/20 to-transparent pointer-events-none" />
-                
-                {/* Contextual Tag */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10 text-[#F5F1E0]">
                   <div className="overflow-hidden mb-2">
-                    <span 
+                    <span
+                      key={`tag-${activeIndex}`} // forces re-animation on index change
                       className="text-xs uppercase tracking-[0.2em] font-bold text-[#CF2D26] block transform transition-transform duration-[800ms] ease-out"
-                      key={`tag-${activeIndex}`} // Forces re-animation on index change
                       style={{ animation: "slideUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards" }}
                     >
                       {CAPABILITIES_DATA[activeIndex].title}
@@ -634,11 +432,9 @@ function Capabilities() {
               </FadeReveal>
             </FadeReveal>
           </div>
-
         </div>
       </div>
-      
-      {/* Inline Keyframes for minor visual touches */}
+
       <style>{`
         @keyframes slideUp {
           from { transform: translateY(100%); opacity: 0; }
@@ -648,44 +444,43 @@ function Capabilities() {
     </section>
   );
 }
+
 function ClosingCTA() {
+  const navigate = useNavigate();
+
   return (
     <section className="relative w-full min-h-[70svh] flex flex-col justify-center py-20 overflow-hidden" style={{ backgroundColor: COLORS.red }}>
-      {/* Grain / Noise Overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.04] mix-blend-multiply pointer-events-none"
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
       />
 
       <div className="relative z-10 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto w-full text-center flex flex-col items-center">
-        
-        <h2 className="text-[14vw] lg:text-[11vw] font-black uppercase leading-[0.8] tracking-tighter" style={{ color: COLORS.cream }}>
-          <TextReveal>Startups</TextReveal>
-          <TextReveal delay={100}>are built.</TextReveal>
-          <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#9A302B] mix-blend-multiply block mt-2 lg:mt-4">
-            <TextReveal delay={200}>from day one.</TextReveal>
-          </span>
+        <h2 className="text-[clamp(3.2rem,8.5vw,8rem)] font-black uppercase leading-[0.82] tracking-tighter" style={{ color: COLORS.cream, fontFamily: "var(--display)" }}>
+          <TextReveal>Great businesses</TextReveal>
+          <TextReveal delay={100}>start with a</TextReveal>
+          <TextReveal delay={200}>bold idea.</TextReveal>
         </h2>
 
         <FadeReveal delay={300} className="mt-12 lg:mt-20 max-w-2xl mx-auto">
-          <p className="text-xl md:text-2xl lg:text-[1.7rem] leading-snug font-medium" style={{ color: "rgba(245, 241, 224, 0.9)" }}>
-            Have something worth building? If you are building in Consumer Goods, Wellness or Lifestyle, start the conversation.
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-normal" style={{ color: "rgba(245, 241, 224, 0.9)" }}>
+            The first insight. The first step. The first customer. The first move towards something bigger.
           </p>
         </FadeReveal>
 
         <FadeReveal delay={450} distance="translate-y-8" className="mt-16">
           <button
             type="button"
+            onClick={() => navigate("/contact")}
             className="group relative inline-flex items-center justify-center overflow-hidden bg-[#F5F1E0] px-12 py-6 text-sm font-bold uppercase tracking-[0.2em] text-[#CF2D26] transition-transform duration-500 hover:scale-105"
           >
             <div className="absolute inset-0 z-0 origin-bottom scale-y-0 bg-[#262119] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100" />
             <span className="relative z-10 flex items-center gap-4 group-hover:text-[#F5F1E0] transition-colors duration-500">
-              Build With DAYONE
+              Start a conversation
               <ArrowRight size={18} className="transition-transform duration-500 group-hover:translate-x-2" />
             </span>
           </button>
         </FadeReveal>
-
       </div>
     </section>
   );
@@ -701,7 +496,6 @@ function Home() {
 
   return (
     <main
-      // Fix applied here: Changed `overflow-x-hidden` to `overflow-clip`
       className="w-full overflow-clip font-sans antialiased selection:bg-[#CF2D26] selection:text-[#F5F1E0]"
       style={{ backgroundColor: COLORS.cream, color: COLORS.charcoal }}
     >
@@ -709,6 +503,7 @@ function Home() {
       <Intro />
       <Ecosystem />
       <Capabilities />
+      <HowWeBuild />
       <ClosingCTA />
     </main>
   );

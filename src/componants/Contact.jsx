@@ -25,7 +25,7 @@ const INTEREST_OPTIONS = [
     "General enquiry",
 ];
 
-const CONTACT_EMAIL = "dayoneventurestudio@gmail.com";
+const CONTACT_EMAIL = "talk@withdayone.com";
 const CONTACT_PHONE = "8078928275";
 
 const SOCIAL_LINKS = [
@@ -83,14 +83,12 @@ export default function Contact() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Preserve native required-field validation on the existing inputs.
         const formEl = event.currentTarget;
         if (!formEl.checkValidity()) {
             formEl.reportValidity();
             return;
         }
 
-        // Build the email body dynamically from whatever the user entered.
         const bodyLines = [`Name: ${form.name}`, `Email: ${form.email}`];
         if (form.phone) bodyLines.push(`Phone: ${form.phone}`);
         if (form.company) bodyLines.push(`Company: ${form.company}`);
@@ -100,14 +98,22 @@ export default function Contact() {
         const subject = `New Contact Form Submission from ${form.name}`;
         const body = bodyLines.join("\n");
 
+        const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+            CONTACT_EMAIL
+        )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
         const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
             subject
         )}&body=${encodeURIComponent(body)}`;
 
         try {
-            window.location.href = mailtoLink;
+            const gmailWindow = window.open(gmailLink, "_blank", "noopener,noreferrer");
+
+            if (!gmailWindow) {
+                window.location.href = mailtoLink;
+            }
         } catch (err) {
-            // If the device can't open a mail client, fail silently and keep the page intact.
+            window.location.href = mailtoLink;
         }
 
         setSubmitted(true);
@@ -416,10 +422,10 @@ export default function Contact() {
                                             </svg>
                                         </div>
                                         <h3 style={{ fontFamily: DISPLAY_FONT }} className="text-[2rem] font-medium text-[#211D18] mb-3">
-                                            Opening your email app.
+                                            Opening Gmail.
                                         </h3>
                                         <p className="text-[16px] text-[#211D18]/60 max-w-sm mx-auto">
-                                            Your message has been pre-filled — just hit send from your email app to reach the DayOne team.
+                                            Your message has been pre-filled — just hit send in Gmail to reach the DayOne team.
                                         </p>
                                     </div>
                                 )}
