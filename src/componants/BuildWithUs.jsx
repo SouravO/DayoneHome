@@ -31,12 +31,37 @@ function useScrollProgress(ref) {
 export default function BuildWithUs() {
   const containerRef = useRef(null);
   const progress = useScrollProgress(containerRef);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches
+  );
+  const [mobileActiveIndex, setMobileActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px)");
+    const updateViewport = () => setIsMobile(mediaQuery.matches);
+
+    updateViewport();
+    mediaQuery.addEventListener("change", updateViewport);
+    return () => mediaQuery.removeEventListener("change", updateViewport);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const intervalId = window.setInterval(() => {
+      setMobileActiveIndex((currentIndex) => (currentIndex + 1) % BUILD_TOGETHER_IMAGES.length);
+    }, 5000);
+
+    return () => window.clearInterval(intervalId);
+  }, [isMobile]);
+
   const activeIndex = Math.min(BUILD_TOGETHER_IMAGES.length - 1, Math.floor(progress * BUILD_TOGETHER_IMAGES.length));
+  const displayedIndex = isMobile ? mobileActiveIndex : activeIndex;
 
   return (
-    <section ref={containerRef} className="relative w-full h-[400vh]" style={{ backgroundColor: "#F4F0E2" }}>
-      <div className="sticky top-0 w-full h-[100svh] flex flex-col lg:flex-row items-center px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto pt-24 lg:pt-32">
-        <div className="w-full lg:w-1/2 flex flex-col justify-center lg:pr-16 shrink-0 z-10 pb-8 lg:pb-0">
+    <section ref={containerRef} className="relative w-full py-16 sm:py-20 lg:h-[400vh] lg:py-0" style={{ backgroundColor: "#F4F0E2" }}>
+      <div className="flex w-full flex-col items-center gap-10 px-6 sm:px-10 lg:sticky lg:top-0 lg:h-[100svh] lg:flex-row lg:gap-0 lg:px-16 lg:pt-32 2xl:px-24 max-w-[100rem] mx-auto">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center lg:pr-16 shrink-0 z-10">
           <h2 className="text-[10vw] lg:text-[5.5vw] font-medium leading-[1.05] tracking-tight mb-6 lg:mb-8" style={{ color: "#211D1B" }}>
             Built for<br />
             founders.<br />
@@ -48,15 +73,15 @@ export default function BuildWithUs() {
           </p>
         </div>
 
-        <div className="w-full lg:w-1/2 flex items-center justify-center z-0 pb-16 lg:pb-0">
-          <div className="relative w-full max-w-[28rem] mx-auto aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-[2rem] lg:rounded-[3rem] overflow-hidden shadow-2xl">
+        <div className="w-full lg:w-1/2 flex items-center justify-center z-0">
+          <div className="relative w-full max-w-[28rem] mx-auto aspect-[1145/1374] rounded-[2rem] lg:aspect-[4/5] lg:rounded-[3rem] overflow-hidden shadow-2xl">
             {BUILD_TOGETHER_IMAGES.map((image, index) => (
               <div
                 key={image.src}
                 className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-                style={{ opacity: activeIndex === index ? 1 : 0, pointerEvents: activeIndex === index ? "auto" : "none", zIndex: activeIndex === index ? 10 : 0 }}
+                style={{ opacity: displayedIndex === index ? 1 : 0, pointerEvents: displayedIndex === index ? "auto" : "none", zIndex: displayedIndex === index ? 10 : 0 }}
               >
-                <img src={image.src} alt={image.alt} className="h-full w-full object-cover" />
+                <img src={image.src} alt={image.alt} className="h-full w-full object-contain lg:object-cover" />
               </div>
             ))}
           </div>

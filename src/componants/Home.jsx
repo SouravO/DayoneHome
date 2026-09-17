@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import HowWeBuild from "./HowWeBuild";
+// import HowWeBuild from "./HowWeBuild";
 
 const COLORS = {
   cream: "#F4F1DF",
@@ -135,7 +135,7 @@ function Hero({ loaded }) {
   const navigate = useNavigate();
 
   return (
-    <section className="relative h-[100svh] min-h-0 w-full flex flex-col justify-end overflow-hidden bg-[#262119]">
+    <section className="relative min-h-[100svh] w-full flex flex-col justify-end overflow-hidden bg-[#262119]">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           ref={imgRef}
@@ -172,24 +172,24 @@ function Hero({ loaded }) {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-4 sm:px-10 lg:px-16 2xl:px-24 pb-8 sm:pb-10 lg:pb-10 pt-18 sm:pt-24 lg:pt-28">
-        <div className="max-w-[72vw] sm:max-w-[32rem] lg:max-w-[48rem]">
-          <h1 className="flex flex-col text-[clamp(5rem,12vw,6rem)] font-black uppercase leading-[0.72] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
+      <div className="relative z-10 w-full max-w-[100rem] mx-auto px-4 sm:px-10 lg:px-16 2xl:px-24 pb-8 sm:pb-10 lg:pb-10 pt-28 sm:pt-24 lg:pt-28">
+        <div className="max-w-[88vw] sm:max-w-[32rem] lg:max-w-[48rem]">
+          <h1 className="flex flex-col text-[clamp(3.7rem,15vw,6rem)] font-black uppercase leading-[0.72] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
             <TextReveal delay={100} className="leading-none">Every idea</TextReveal>
             <TextReveal delay={250} className="-mt-1 lg:-mt-3 leading-none">has a start.</TextReveal>
-            <span className="font-serif italic font-normal capitalize tracking-[-0.04em] mt-1 lg:mt-2 text-[clamp(2.2rem,6vw,4.5rem)] leading-[0.8] text-[#CF2D26] drop-shadow-2xl flex">
+            <span className="font-serif italic font-normal capitalize tracking-[-0.04em] mt-1 lg:mt-2 text-[clamp(2rem,7vw,4.5rem)] leading-[0.8] text-[#CF2D26] drop-shadow-2xl flex">
               <TextReveal delay={400} className="pb-1">We turn opportunities<br />into businesses.</TextReveal>
             </span>
           </h1>
 
-          <div className="mt-6 sm:mt-10 lg:mt-9">
+          <div className="mt-5 sm:mt-10 lg:mt-9">
             <FadeReveal delay={600}>
               <p className="max-w-[32rem] text-base sm:text-lg lg:text-[1.42rem] leading-[1.55] font-medium" style={{ color: "rgba(245, 241, 224, 0.85)" }}>
                 Day One Ventures builds, launches and scales new companies across India, the Middle East and global markets.
               </p>
             </FadeReveal>
 
-            <FadeReveal delay={750} distance="translate-y-6" className="mt-8 sm:mt-10">
+            <FadeReveal delay={750} distance="translate-y-6" className="mt-6 sm:mt-10">
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                 <PremiumButton dark onClick={() => navigate("/services")}>Explore Ventures</PremiumButton>
                 <PremiumButton dark onClick={() => navigate("/career")}>Careers</PremiumButton>
@@ -503,7 +503,7 @@ function Home() {
       <Intro />
       <Ecosystem />
       <Capabilities />
-      <HowWeBuild />
+      {/* <HowWeBuild /> */}
       <ClosingCTA />
     </main>
   );
