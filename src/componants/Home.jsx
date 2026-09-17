@@ -141,9 +141,9 @@ function Hero({ loaded }) {
           ref={imgRef}
           src="/Hero.png"
           alt="DayOne Studio Office"
-          className="hero-background-image w-[170%] sm:w-full h-[120%] object-cover object-center transition-all duration-[2500ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]"
+          className="hero-background-image absolute inset-0 h-full w-full object-cover object-center transition-all duration-[2500ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]"
           style={{
-            transform: `translateY(${imgOffset}px) scale(${loaded ? 0.98 : 1.08})`,
+            transform: `translateY(${imgOffset}px) scale(${loaded ? 1.02 : 1.08})`,
             opacity: loaded ? 1 : 0.4,
             filter: "contrast(1.05) brightness(0.95)",
             objectPosition: "76% center",
