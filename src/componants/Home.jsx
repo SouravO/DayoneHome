@@ -191,7 +191,12 @@ function Hero({ loaded }) {
 
             <FadeReveal delay={750} distance="translate-y-6" className="mt-6 sm:mt-10">
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                <PremiumButton dark onClick={() => navigate("/services")}>Explore Ventures</PremiumButton>
+                <PremiumButton
+                  dark
+                  onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSc4pkRGdemGJSohkPrex_rg4KlhgA-Sx2cvS2fx3SOwLFAkXA/viewform?usp=dialog", "_blank", "noopener,noreferrer")}
+                >
+                  Share Your Idea
+                </PremiumButton>
                 <PremiumButton dark onClick={() => navigate("/career")}>Careers</PremiumButton>
               </div>
             </FadeReveal>
