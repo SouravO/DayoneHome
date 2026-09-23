@@ -321,7 +321,7 @@ export default function Service() {
                   <div className="absolute -inset-3 sm:-inset-4 border border-[rgba(33,29,27,0.15)] pointer-events-none transition-all duration-700 group-hover:border-[#DC2D26]/40" />
                   <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[16/9] bg-[#211D1B] glow-red-subtle">
                     <img
-                      src="/Service.png"
+                      src="/service.png"
                       alt="Dayone Ventures Execution"
                       className="w-full h-full object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
                     />

@@ -20,7 +20,7 @@ function Footer() {
                             <DayOneLogo variant="navbar" className="brightness-0 invert-[0.95]" />
                         </div>
                         <p className="text-sm text-neutral-400 leading-relaxed max-w-sm">
-                            A modern venture studio working side-by-side with visionary founders to engineer high-impact ventures from inception.
+                            DAYONE is a domain-focused venture studio building companies across Consumer Goods, Wellness and Lifestyle. We work alongside founders from idea to scale.
                         </p>
                     </div>
 
