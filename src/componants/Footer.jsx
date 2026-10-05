@@ -47,7 +47,7 @@ function Footer() {
                                     className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
                                 >
                                     <span className="relative">
-                                        +91 8078928275
+                                        8129957753
                                         <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-[#E63946] transition-all duration-300 group-hover:w-full"></span>
                                     </span>
                                 </a>
