@@ -197,10 +197,7 @@ function About() {
               <p className="text-xl sm:text-2xl text-[#211D1B] font-light leading-snug mb-10" style={fontDisplay}>
                 DAYONE is a domain-focused venture studio building companies across Consumer Goods, Wellness and Lifestyle. We combine founder ambition with venture-building infrastructure, operating visibility and capital readiness.
               </p>
-              <button className="group flex items-center gap-4 text-xs uppercase tracking-[0.2em] font-semibold text-[#211D1B] hover:text-[#DC2D26] transition-colors">
-                <span className="w-12 h-[1px] bg-current transition-all duration-300 group-hover:w-16" />
-                Explore The Model
-              </button>
+             
             </Reveal>
           </div>
 

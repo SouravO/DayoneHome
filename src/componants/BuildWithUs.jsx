@@ -4,7 +4,7 @@ const BUILD_TOGETHER_IMAGES = [
   { src: "/slide1.png", alt: "DayOne works with founders." },
   { src: "/slide2.png", alt: "The DayOne venture-building system." },
   { src: "/slide3.png", alt: "DayOne works with investors." },
-  { src: "/slide4.png", alt: "Building better companies together." },
+  { src: "/Slide4.png", alt: "Building better companies together." },
 ];
 
 function useScrollProgress(ref) {

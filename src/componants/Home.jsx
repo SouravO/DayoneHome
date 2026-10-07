@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SkewInText from "../components/originkit/ui/skew-in-text-effect";
 // import HowWeBuild from "./HowWeBuild";
 
 const COLORS = {
@@ -80,16 +81,18 @@ function TextReveal({ children, delay = 0, className = "", clip = true }) {
   );
 }
 
-function FadeReveal({ children, delay = 0, className = "", distance = "translate-y-8" }) {
+function FadeReveal({ children, delay = 0, className = "", distance = "translate-y-8", play = true, duration = 1200 }) {
   const [ref, visible] = useReveal();
+  const shown = visible && play;
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${className}`}
+      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none ${className}`}
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : distance,
-        transitionDelay: visible ? `${delay}ms` : "0ms",
+        opacity: shown ? 1 : 0,
+        transform: shown ? "translateY(0)" : distance,
+        transitionDelay: shown ? `${delay}ms` : "0ms",
+        transitionDuration: `${duration}ms`,
       }}
     >
       {children}
@@ -130,13 +133,15 @@ const CAPABILITIES_DATA = [
 ];
 
 /* Sections */
-function Hero({ loaded }) {
+function Hero({ loaded, introComplete }) {
   const [imgRef, imgOffset] = useParallax(0.15);
   const navigate = useNavigate();
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col justify-end overflow-hidden bg-[#262119]">
       <div className="absolute inset-0 z-0 overflow-hidden">
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/mobilehero.png" />
         <img
           ref={imgRef}
           src="/Hero.png"
@@ -149,9 +154,13 @@ function Hero({ loaded }) {
             objectPosition: "76% center",
           }}
         />
+        </picture>
         <style>{`
           @media (min-width: 1024px) {
             .hero-background-image { object-position: 88% center !important; }
+          }
+          @media (max-width: 767px) {
+            .hero-background-image { object-position: right center !important; }
           }
         `}</style>
 
@@ -175,21 +184,52 @@ function Hero({ loaded }) {
       <div className="relative z-10 w-full max-w-[100rem] mx-auto px-4 sm:px-10 lg:px-16 2xl:px-24 pb-8 sm:pb-10 lg:pb-10 pt-28 sm:pt-24 lg:pt-28">
         <div className="max-w-[88vw] sm:max-w-[32rem] lg:max-w-[48rem]">
           <h1 className="flex flex-col text-[clamp(3.7rem,15vw,6rem)] font-black uppercase leading-[0.72] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
-            <TextReveal delay={100} className="leading-none">Every idea</TextReveal>
-            <TextReveal delay={250} className="-mt-1 lg:-mt-3 leading-none">has a start.</TextReveal>
-            <span className="font-serif italic font-normal capitalize tracking-[-0.04em] mt-1 lg:mt-2 text-[clamp(2rem,7vw,4.5rem)] leading-[0.8] text-[#CF2D26] drop-shadow-2xl flex">
-              <TextReveal delay={400} className="pb-1">We turn opportunities<br />into businesses.</TextReveal>
-            </span>
+            <SkewInText
+              play={introComplete}
+              text="Every idea"
+              width="100%"
+              height="auto"
+              color={COLORS.cream}
+              font={{ fontFamily: "var(--heading)", fontWeight: 900, fontSize: "clamp(3.7rem, 15vw, 6rem)", lineHeight: 0.9, letterSpacing: "-0.055em", textTransform: "uppercase" }}
+              startX={-80}
+              startSkewX={18}
+              appearTransition={{ type: "tween", duration: 0.55, ease: "easeOut", delay: 0 }}
+              style={{ justifyContent: "flex-start" }}
+            />
+            <SkewInText
+              play={introComplete}
+              text="has a start."
+              width="100%"
+              height="auto"
+              color={COLORS.cream}
+              font={{ fontFamily: "var(--heading)", fontWeight: 900, fontSize: "clamp(3rem, 12vw, 5.5rem)", lineHeight: 0.9, letterSpacing: "-0.055em", textTransform: "uppercase", whiteSpace: "nowrap" }}
+              startX={-80}
+              startSkewX={18}
+              appearTransition={{ type: "tween", duration: 0.55, ease: "easeOut", delay: 0 }}
+              style={{ justifyContent: "flex-start", marginTop: "-0.08em" }}
+            />
+            <SkewInText
+              play={introComplete}
+              text={"We turn opportunities\ninto businesses."}
+              width="100%"
+              height="auto"
+              color={COLORS.red}
+              font={{ fontFamily: "var(--editorial-italic)", fontWeight: 400, fontSize: "clamp(2rem, 7vw, 4.5rem)", lineHeight: 1.05, letterSpacing: "-0.04em", fontStyle: "italic", textTransform: "capitalize" }}
+              startX={-60}
+              startSkewX={12}
+              appearTransition={{ type: "tween", duration: 0.6, ease: "easeOut", delay: 0 }}
+              style={{ justifyContent: "flex-start", marginTop: "0.08em", overflow: "hidden" }}
+            />
           </h1>
 
           <div className="mt-5 sm:mt-10 lg:mt-9">
-            <FadeReveal delay={600}>
+            <FadeReveal play={introComplete} duration={450}>
               <p className="max-w-[32rem] text-base sm:text-lg lg:text-[1.42rem] leading-[1.55] font-medium" style={{ color: "rgba(245, 241, 224, 0.85)" }}>
                 Day One Ventures builds, launches and scales new companies across India, the Middle East and global markets.
               </p>
             </FadeReveal>
 
-            <FadeReveal delay={750} distance="translate-y-6" className="mt-6 sm:mt-10">
+            <FadeReveal play={introComplete} duration={450} distance="translate-y-6" className="mt-6 sm:mt-10">
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                 <PremiumButton
                   dark
@@ -493,10 +533,19 @@ function ClosingCTA() {
 
 function Home() {
   const [loaded, setLoaded] = useState(false);
+  const [introComplete, setIntroComplete] = useState(
+    () => document.documentElement.dataset.introComplete === "true"
+  );
 
   useEffect(() => {
     const timeout = setTimeout(() => setLoaded(true), 100);
     return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
+    const onIntroComplete = () => setIntroComplete(true);
+    window.addEventListener("intro:complete", onIntroComplete);
+    return () => window.removeEventListener("intro:complete", onIntroComplete);
   }, []);
 
   return (
@@ -504,7 +553,7 @@ function Home() {
       className="w-full overflow-clip font-sans antialiased selection:bg-[#CF2D26] selection:text-[#F5F1E0]"
       style={{ backgroundColor: COLORS.cream, color: COLORS.charcoal }}
     >
-      <Hero loaded={loaded} />
+      <Hero loaded={loaded} introComplete={introComplete} />
       <Intro />
       <Ecosystem />
       <Capabilities />
