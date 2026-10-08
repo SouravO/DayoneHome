@@ -7,14 +7,14 @@ function Footer() {
     }
 
     return (
-        <footer className="relative bg-[#F4F1DF] text-[#221F1F] pt-20 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-[#221F1F]/15 selection:bg-[#DD3027] selection:text-white">
+        <footer className="relative bg-[#F4F1DF] text-[#221F1F] pt-10 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-[#221F1F]/15 selection:bg-[#DD3027] selection:text-white">
             <div className="max-w-7xl mx-auto">
                 {/* INFORMATION & CONTACT GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pt-16 pb-2 border-b border-[#221F1F]/15">
                     {/* Brand Tagline Column */}
                     <div className="md:col-span-5 space-y-4">
                         <div className="inline-block">
-                            <img src="/logo.png" alt="DayOne logo" className="h-12 w-auto object-contain sm:h-14" />
+                            <img src="/logo.png" alt="DayOne logo" className="h-14 w-auto object-contain sm:h-16" />
                         </div>
                         <p className="text-sm text-[#221F1F]/75 leading-relaxed max-w-sm">
                             DAYONE is a domain-focused venture studio building companies across Consumer Goods, Wellness and Lifestyle. We work alongside founders from idea to scale.
@@ -133,7 +133,9 @@ function Footer() {
 
                 {/* Footer logo */}
                 <div className="py-0 border-b border-[#221F1F]/15 flex justify-center">
-                    <img src="/logo.png" alt="DayOne logo" className="w-[min(72vw,1100px)] h-auto object-contain" />
+                    <h1 className="text-[12vw] sm:text-[13vw] font-black tracking-tighter leading-none text-center uppercase text-[#221F1F] opacity-50">
+                        DAY<span className="text-[#E63946]">ONE</span>
+                    </h1>
                 </div>
 
                 {/* 4. LEGAL & BACK TO TOP */}

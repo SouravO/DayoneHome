@@ -123,7 +123,7 @@ export default function Contact() {
         <section
             id="contact"
             ref={sectionRef}
-            className="relative bg-[#F4F2E3] px-6 py-16 sm:px-10 lg:px-16 overflow-hidden selection:bg-[#DD2D26]/20 selection:text-[#211D18]"
+            className="relative bg-[#F4F2E3] px-6 pt-28 pb-16 sm:px-10 sm:py-16 lg:px-16 overflow-hidden selection:bg-[#DD2D26]/20 selection:text-[#211D18]"
         >
             {/* Inline styles for custom premium animations without external CSS dependencies */}
             <style dangerouslySetInnerHTML={{

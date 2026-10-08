@@ -166,7 +166,7 @@ function About() {
       {/* ============================================================ */}
       {/* SECTION 1 — NEW EDITORIAL HERO                               */}
       {/* ============================================================ */}
-      <section className="relative min-h-screen pt-8 pb-12 px-6 sm:px-10 lg:px-16 bg-[#F4F0E2] flex flex-col">
+      <section className="relative min-h-screen pt-14 sm:pt-8 pb-12 px-6 sm:px-10 lg:px-16 bg-[#F4F0E2] flex flex-col">
         {/* Subtle Top Nav/Eyebrow */}
         <Reveal delay={100} y="translate-y-4">
          

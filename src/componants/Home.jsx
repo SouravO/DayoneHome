@@ -66,8 +66,9 @@ function useParallax(speed = 0.05) {
 /* Reveal + button primitives */
 function TextReveal({ children, delay = 0, className = "", clip = true }) {
   const [ref, visible] = useReveal();
+  const customPadding = className.split(/\s+/).some((token) => token === "py-0" || token === "!py-0");
   return (
-    <div ref={ref} className={`${clip ? "overflow-hidden" : "overflow-visible"} py-2 ${className}`}>
+    <div ref={ref} className={`${clip ? "overflow-hidden" : "overflow-visible"} ${customPadding ? "" : "py-2"} ${className}`}>
       <div
         className="transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
         style={{
@@ -183,14 +184,14 @@ function Hero({ loaded, introComplete }) {
 
       <div className="relative z-10 w-full max-w-[100rem] mx-auto px-4 sm:px-10 lg:px-16 2xl:px-24 pb-8 sm:pb-10 lg:pb-10 pt-28 sm:pt-24 lg:pt-28">
         <div className="max-w-[88vw] sm:max-w-[32rem] lg:max-w-[48rem]">
-          <h1 className="flex flex-col text-[clamp(3.7rem,15vw,6rem)] font-black uppercase leading-[0.72] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
+          <h1 className="flex flex-col text-[clamp(3.2rem,11vw,5rem)] font-black uppercase leading-[0.72] tracking-[-0.055em]" style={{ color: COLORS.cream }}>
             <SkewInText
               play={introComplete}
               text="Every idea"
               width="100%"
               height="auto"
               color={COLORS.cream}
-              font={{ fontFamily: "var(--heading)", fontWeight: 900, fontSize: "clamp(3.7rem, 15vw, 6rem)", lineHeight: 0.9, letterSpacing: "-0.055em", textTransform: "uppercase" }}
+              font={{ fontFamily: "var(--heading)", fontWeight: 900, fontSize: "clamp(3.2rem, 11vw, 5rem)", lineHeight: 0.9, letterSpacing: "-0.055em", textTransform: "uppercase" }}
               startX={-80}
               startSkewX={18}
               appearTransition={{ type: "tween", duration: 0.55, ease: "easeOut", delay: 0 }}
@@ -202,7 +203,7 @@ function Hero({ loaded, introComplete }) {
               width="100%"
               height="auto"
               color={COLORS.cream}
-              font={{ fontFamily: "var(--heading)", fontWeight: 900, fontSize: "clamp(3rem, 12vw, 5.5rem)", lineHeight: 0.9, letterSpacing: "-0.055em", textTransform: "uppercase", whiteSpace: "nowrap" }}
+              font={{ fontFamily: "var(--heading)", fontWeight: 900, fontSize: "clamp(2.8rem, 9.5vw, 4.75rem)", lineHeight: 0.9, letterSpacing: "-0.055em", textTransform: "uppercase", whiteSpace: "nowrap" }}
               startX={-80}
               startSkewX={18}
               appearTransition={{ type: "tween", duration: 0.55, ease: "easeOut", delay: 0 }}
@@ -214,7 +215,7 @@ function Hero({ loaded, introComplete }) {
               width="100%"
               height="auto"
               color={COLORS.red}
-              font={{ fontFamily: "var(--editorial-italic)", fontWeight: 400, fontSize: "clamp(2rem, 7vw, 4.5rem)", lineHeight: 1.05, letterSpacing: "-0.04em", fontStyle: "italic", textTransform: "capitalize" }}
+              font={{ fontFamily: "var(--editorial-italic)", fontWeight: 400, fontSize: "clamp(1.8rem, 5.5vw, 3.7rem)", lineHeight: 1.05, letterSpacing: "-0.04em", fontStyle: "italic", textTransform: "capitalize" }}
               startX={-60}
               startSkewX={12}
               appearTransition={{ type: "tween", duration: 0.6, ease: "easeOut", delay: 0 }}
@@ -269,7 +270,7 @@ function Intro() {
       <div className="relative z-10 flex h-full items-start px-5 pt-8 sm:items-center sm:px-10 sm:py-8 lg:px-16 lg:py-10 2xl:px-24">
         <div className="w-full max-w-[100rem] mx-auto">
           <div className="w-full max-w-3xl">
-            <h2 className="text-[clamp(2.2rem,6.8vw,5.8rem)] font-black uppercase leading-none tracking-tighter sm:text-[clamp(2.3rem,6.2vw,5.8rem)]" style={{ color: COLORS.cream }}>
+            <h2 className="text-[clamp(2rem,5.4vw,4.8rem)] font-black uppercase leading-none tracking-tighter sm:text-[clamp(2.1rem,5.2vw,4.8rem)]" style={{ color: COLORS.cream }}>
               <TextReveal className="py-0 leading-none">Opportunities</TextReveal>
               <TextReveal delay={150} className="py-0 leading-none">become businesses.</TextReveal>
               <span className="font-serif italic lowercase tracking-tight leading-[1] text-[#CF2D26] block">
@@ -327,7 +328,7 @@ function Ecosystem() {
               <TextReveal delay={200} clip={false}>for what's next.</TextReveal>
             </span>
           </h2>
-          <FadeReveal delay={300} className="mt-12 lg:mt-16">
+          <FadeReveal delay={300} className="mt-6 lg:mt-8">
             <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed max-w-2xl font-medium" style={{ color: COLORS.charcoalMuted }}>
               Day One focuses on emerging opportunities where consumer needs, innovation and execution come together to create new businesses.
             </p>
@@ -502,9 +503,9 @@ function ClosingCTA() {
 
       <div className="relative z-10 px-6 sm:px-10 lg:px-16 2xl:px-24 max-w-[100rem] mx-auto w-full text-center flex flex-col items-center">
         <h2 className="text-[clamp(3.2rem,8.5vw,8rem)] font-black uppercase leading-[0.82] tracking-tighter" style={{ color: COLORS.cream, fontFamily: "var(--display)" }}>
-          <TextReveal>Great businesses</TextReveal>
-          <TextReveal delay={100}>start with a</TextReveal>
-          <TextReveal delay={200}>bold idea.</TextReveal>
+          <TextReveal className="!py-0 sm:!py-2">Great businesses</TextReveal>
+          <TextReveal delay={100} className="!py-0 sm:!py-2">start with a</TextReveal>
+          <TextReveal delay={200} className="!py-0 sm:!py-2">bold idea.</TextReveal>
         </h2>
 
         <FadeReveal delay={300} className="mt-12 lg:mt-20 max-w-2xl mx-auto">
