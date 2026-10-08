@@ -166,7 +166,7 @@ function About() {
       {/* ============================================================ */}
       {/* SECTION 1 — NEW EDITORIAL HERO                               */}
       {/* ============================================================ */}
-      <section className="relative min-h-screen pt-8 pb-12 px-6 sm:px-10 lg:px-16 bg-[#F4F0E2] flex flex-col">
+      <section className="relative min-h-screen pt-14 sm:pt-8 pb-12 px-6 sm:px-10 lg:px-16 bg-[#F4F0E2] flex flex-col">
         {/* Subtle Top Nav/Eyebrow */}
         <Reveal delay={100} y="translate-y-4">
          
@@ -197,10 +197,7 @@ function About() {
               <p className="text-xl sm:text-2xl text-[#211D1B] font-light leading-snug mb-10" style={fontDisplay}>
                 DAYONE is a domain-focused venture studio building companies across Consumer Goods, Wellness and Lifestyle. We combine founder ambition with venture-building infrastructure, operating visibility and capital readiness.
               </p>
-              <button className="group flex items-center gap-4 text-xs uppercase tracking-[0.2em] font-semibold text-[#211D1B] hover:text-[#DC2D26] transition-colors">
-                <span className="w-12 h-[1px] bg-current transition-all duration-300 group-hover:w-16" />
-                Explore The Model
-              </button>
+             
             </Reveal>
           </div>
 

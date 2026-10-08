@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 
 // Brand palette: paper cream, DayOne red, and ink black.
@@ -14,6 +14,8 @@ const NAV_LINKS = [
 function Navbar() {
     const [open, setOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [hidden, setHidden] = useState(false)
+    const lastScrollY = useRef(0)
     const { pathname } = useLocation()
     const transparent = !scrolled && !open
     const onHome = pathname === "/"
@@ -24,6 +26,27 @@ function Navbar() {
         window.addEventListener("scroll", handleScroll, { passive: true })
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
+
+    useEffect(() => {
+        const handleDirection = () => {
+            const currentY = window.scrollY
+            const delta = currentY - lastScrollY.current
+
+            if (open || currentY <= 80) {
+                setHidden(false)
+            } else if (delta > 4) {
+                setHidden(true)
+            } else if (delta < -4) {
+                setHidden(false)
+            }
+
+            lastScrollY.current = currentY
+        }
+
+        lastScrollY.current = window.scrollY
+        window.addEventListener("scroll", handleDirection, { passive: true })
+        return () => window.removeEventListener("scroll", handleDirection)
+    }, [open])
 
     const linkClass = ({ isActive }) =>
         `transition-colors duration-300 ${
@@ -36,7 +59,9 @@ function Navbar() {
 
     return (
         <nav
-            className={`fixed inset-x-0 top-0 z-30 border-b px-6 transition-all duration-300 sm:px-10 ${
+            className={`fixed inset-x-0 top-0 z-30 border-b px-6 transition-all duration-300 will-change-transform sm:px-10 ${
+                hidden && !open ? "-translate-y-full pointer-events-none" : "translate-y-0"
+            } ${
                 scrolled || open
                     ? "border-[#221F1F]/10 bg-[#F4F1DF]/95 shadow-sm backdrop-blur"
                     : "border-transparent bg-transparent"

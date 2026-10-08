@@ -1,6 +1,3 @@
-import { Link } from 'react-router-dom'
-import DayOneLogo from './DayOneLogo' // Adjust path if necessary
-
 function Footer() {
     const scrollToTop = () => {
         window.scrollTo({
@@ -10,30 +7,30 @@ function Footer() {
     }
 
     return (
-        <footer className="relative bg-[#221F1F] text-[#F4F1DF] pt-20 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-[#F4F1DF]/15 selection:bg-[#DD3027] selection:text-white">
+        <footer className="relative bg-[#F4F1DF] text-[#221F1F] pt-10 pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden border-t border-[#221F1F]/15 selection:bg-[#DD3027] selection:text-white">
             <div className="max-w-7xl mx-auto">
                 {/* INFORMATION & CONTACT GRID */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 py-16 border-b border-neutral-800/80">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pt-16 pb-2 border-b border-[#221F1F]/15">
                     {/* Brand Tagline Column */}
                     <div className="md:col-span-5 space-y-4">
                         <div className="inline-block">
-                            <DayOneLogo variant="navbar" className="brightness-0 invert-[0.95]" />
+                            <img src="/logo.png" alt="DayOne logo" className="h-14 w-auto object-contain sm:h-16" />
                         </div>
-                        <p className="text-sm text-neutral-400 leading-relaxed max-w-sm">
+                        <p className="text-sm text-[#221F1F]/75 leading-relaxed max-w-sm">
                             DAYONE is a domain-focused venture studio building companies across Consumer Goods, Wellness and Lifestyle. We work alongside founders from idea to scale.
                         </p>
                     </div>
 
                     {/* Direct Contact Column */}
                     <div className="md:col-span-4 space-y-4">
-                        <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
+                        <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-[#221F1F]/70">
                             Contact
                         </h3>
                         <ul className="space-y-3">
                             <li>
                                 <a
                                     href="mailto:talk@withdayone.com"
-                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#221F1F] hover:text-[#E63946] transition-colors duration-300"
                                 >
                                     <span className="relative">
                                         talk@withdayone.com
@@ -44,7 +41,7 @@ function Footer() {
                             <li>
                                 <a
                                     href="tel:8078928275"
-                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#221F1F] hover:text-[#E63946] transition-colors duration-300"
                                 >
                                     <span className="relative">
                                         8129957753
@@ -57,7 +54,7 @@ function Footer() {
 
                     {/* Social Column */}
                     <div className="md:col-span-3 space-y-4">
-                        <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
+                        <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-[#221F1F]/70">
                             Social
                         </h3>
                         <ul className="space-y-3">
@@ -66,11 +63,11 @@ function Footer() {
                                     href="https://www.instagram.com/dayone_venturestudio/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#221F1F] hover:text-[#E63946] transition-colors duration-300"
                                 >
                                     <span>Instagram</span>
                                     <svg
-                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-neutral-400 group-hover:text-[#E63946]"
+                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-[#221F1F]/70 group-hover:text-[#E63946]"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -89,11 +86,11 @@ function Footer() {
                                     href="https://www.facebook.com/profile.php?id=61574333967955&mibextid=rS40aB7S9Ucbxw6v"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#221F1F] hover:text-[#E63946] transition-colors duration-300"
                                 >
                                     <span>Facebook</span>
                                     <svg
-                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-neutral-400 group-hover:text-[#E63946]"
+                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-[#221F1F]/70 group-hover:text-[#E63946]"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -112,11 +109,11 @@ function Footer() {
                                     href="https://www.linkedin.com/company/dayone-venture-studio/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#F5F2EB] hover:text-[#E63946] transition-colors duration-300"
+                                    className="group inline-flex items-center gap-2 text-base sm:text-lg text-[#221F1F] hover:text-[#E63946] transition-colors duration-300"
                                 >
                                     <span>LinkedIn</span>
                                     <svg
-                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-neutral-400 group-hover:text-[#E63946]"
+                                        className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 text-[#221F1F]/70 group-hover:text-[#E63946]"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -134,27 +131,24 @@ function Footer() {
                     </div>
                 </div>
 
-                {/* 3. HERO WORDMARK ("WOW FACTOR") */}
-                <div className="py-12 border-b border-neutral-800/80 group cursor-default select-none">
-                    <h1 className="text-[12vw] sm:text-[13vw] font-black tracking-tighter leading-none text-center uppercase text-neutral-900 group-hover:text-[#F5F2EB] transition-colors duration-700">
-                        DAY
-                        <span className="text-[#E63946] group-hover:drop-shadow-[0_0_25px_rgba(230,57,70,0.4)] transition-all duration-500">
-                            ONE
-                        </span>
+                {/* Footer logo */}
+                <div className="py-0 border-b border-[#221F1F]/15 flex justify-center">
+                    <h1 className="text-[12vw] sm:text-[13vw] font-black tracking-tighter leading-none text-center uppercase text-[#221F1F] opacity-50">
+                        DAY<span className="text-[#E63946]">ONE</span>
                     </h1>
                 </div>
 
                 {/* 4. LEGAL & BACK TO TOP */}
-                <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 font-mono">
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#221F1F]/70 font-mono">
                     <p>© 2026 DayOne Venture Studio. All rights reserved.</p>
 
                     <button
                         onClick={scrollToTop}
-                        className="group inline-flex items-center gap-2 text-neutral-400 hover:text-[#F5F2EB] transition-colors duration-300 cursor-pointer"
+                        className="group inline-flex items-center gap-2 text-[#221F1F]/70 hover:text-[#221F1F] transition-colors duration-300 cursor-pointer"
                         aria-label="Back to top"
                     >
                         <span className="uppercase tracking-wider">Back to top</span>
-                        <div className="w-7 h-7 rounded-full border border-neutral-800 group-hover:border-[#E63946] group-hover:bg-[#E63946] text-neutral-400 group-hover:text-white flex items-center justify-center transition-all duration-300">
+                        <div className="w-7 h-7 rounded-full border border-[#221F1F]/30 group-hover:border-[#E63946] group-hover:bg-[#E63946] text-[#221F1F] group-hover:text-white flex items-center justify-center transition-all duration-300">
                             <svg
                                 className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-y-0.5"
                                 fill="none"

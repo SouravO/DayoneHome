@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 function Career() {
     return (
         <main className="bg-[#F4F1DF] text-[#221F1F]">
-            <section className="flex min-h-[calc(100svh-5rem)] items-center px-6 py-24 sm:px-10 lg:px-16 2xl:px-24">
+            <section className="flex min-h-[calc(100svh-5rem)] items-start px-6 pt-32 pb-24 sm:items-center sm:px-10 sm:py-24 lg:px-16 2xl:px-24">
                 <div className="mx-auto grid w-full max-w-7xl gap-16 lg:grid-cols-12 lg:items-end">
                     <div className="lg:col-span-8">
                         <p className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-[#DD3027]">

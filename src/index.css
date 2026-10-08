@@ -1,5 +1,30 @@
 @import "tailwindcss";
 
+@media (max-width: 767px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.12 !important;
+  }
+
+  h1 [class],
+  h2 [class],
+  h3 [class],
+  h4 [class],
+  h5 [class],
+  h6 [class] {
+    line-height: inherit !important;
+  }
+
+  p,
+  li {
+    line-height: 1.5 !important;
+  }
+}
+
 :root {
   --text: #221f1f;
   --text-h: #221f1f;
